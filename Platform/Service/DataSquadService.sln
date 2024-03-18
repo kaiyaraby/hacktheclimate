@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSquad.Service.API", "DataSquad.Service.API\DataSquad.Service.API.csproj", "{CE59A458-BDC5-47B0-81E8-61889E958D66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSquad.Service.Data", "DataSquad.Service.Data\DataSquad.Service.Data.csproj", "{A29ABC38-38AE-4868-BAB2-79BA503901E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE59A458-BDC5-47B0-81E8-61889E958D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE59A458-BDC5-47B0-81E8-61889E958D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE59A458-BDC5-47B0-81E8-61889E958D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE59A458-BDC5-47B0-81E8-61889E958D66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A29ABC38-38AE-4868-BAB2-79BA503901E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A29ABC38-38AE-4868-BAB2-79BA503901E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A29ABC38-38AE-4868-BAB2-79BA503901E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A29ABC38-38AE-4868-BAB2-79BA503901E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
