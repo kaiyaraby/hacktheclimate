@@ -9,6 +9,11 @@ readme = "README.md"
 python = "^3.10"
 ipykernel = "^6.29.3"
 ruff = "^0.3.3"
+requests = "^2.31.0"
+python-dotenv = "^1.0.1"
+aiohttp = "^3.9.3"
+pandas = "^2.2.1"
+tqdm = "^4.66.2"
 
 
 [build-system]
