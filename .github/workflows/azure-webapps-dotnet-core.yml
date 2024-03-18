@@ -52,14 +52,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: Change Directory
-        run: ls && cd Platform/Service && ls
-
-      - name: Build with dotnet
-        run: ls && dotnet build --configuration Release
-
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      - name: Dotnet Shenanigans
+        run: cd Platform/Service && dotnet build --configuration Release && dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
