@@ -28,7 +28,7 @@
     <img src="images/logo.png" alt="Logo" width="150" height="150">
   </a>
 
-  <h3 align="center">Statistical Offshore Access Modelling</h3>
+  <h3 align="center">PengWind</h3>
 
   <p align="center">
     Python package using stochastic methods to estimate accessibility traits based on historic wave height data.
