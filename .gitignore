@@ -1,3 +1,4 @@
-analysis/.env
+.env
 .DS_STore
 .python-version
+**/*.pyc
