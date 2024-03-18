@@ -22,7 +22,9 @@ builder.Services.AddCors(options =>
 options.AddPolicy(name: allowSpecificOrigins,
         policy  =>
         {
-        policy.WithOrigins("http://localhost:3000");
+        policy.WithOrigins("http://localhost:3000", "https://climatehackathondatalake.z33.web.core.windows.net")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
         });
 });
 

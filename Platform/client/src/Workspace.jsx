@@ -1,5 +1,6 @@
 import { React, useState, useEffect, useRef } from "react";
 import { getExampleData } from './Service/Example';
+import { getAnalysis } from "./Service/Analysis";
 import Globe from "react-globe.gl";
 import EarthTexture from "./earthtexture.jpg";
 import Container from "react-bootstrap/Container";
@@ -26,6 +27,21 @@ const WorkspaceComponent = (props) => {
 
     const [points, setPoints] = useState([]);
     const [globeSelectedArea, setGlobeSelectedArea] = useState([]);
+    const [analysis, setAnalysis] = useState({});
+    const [refresh, setRefresh] = useState(false);
+
+    useEffect(() => {
+        const updateAnalysis = async () => {
+            const requestBody = points.map((x) => ({
+                latitude: x[1],
+                longitude: x[0]
+            }));
+            const response = await getAnalysis(requestBody);
+            setAnalysis(response);
+        };
+        console.log(points);
+        updateAnalysis();
+    }, [points, refresh]);
 
     const addPoint = (lat, lng) => {
         let newPoints = points;
@@ -37,8 +53,8 @@ const WorkspaceComponent = (props) => {
                 type: "Polygon",
                 coordinates: [points]
             }
-        }, accessCoverage]);
-        console.log(globeSelectedArea);
+        }]);
+        setRefresh(!refresh);
     };
 
     const resetPoints = () => {
@@ -46,7 +62,7 @@ const WorkspaceComponent = (props) => {
         setGlobeSelectedArea([]);
     };
 
-    return <RootInterfaceComponent globeSelectedArea={globeSelectedArea} addPoint={addPoint} resetPoints={resetPoints}/>;
+    return <RootInterfaceComponent analysis={analysis} globeSelectedArea={globeSelectedArea} points={points} addPoint={addPoint} resetPoints={resetPoints}/>;
 };
 
 const MenuComponent = (props) => {
@@ -68,6 +84,9 @@ const MenuComponent = (props) => {
                 <Button onClick={props.resetPoints}>
                     Reset
                 </Button>
+            </Row>
+            <Row>
+                {JSON.stringify(props.analysis)}
             </Row>
         </Container>
     </div>
@@ -95,8 +114,8 @@ const RootInterfaceComponent = (props) => {
         console.log("Right Click at " + lat + ", " + lng);
     }
     return <>
-        <GlobeComponent globeElement={globeElement} windowWidth={windowWidth} shiftAmount={shiftAmount} onGlobeClick={onGlobeClick} onGlobeRightClick={onGlobeRightClick} globeSelectedArea={props.globeSelectedArea} />
-        <MenuComponent points={props.globeSelectedArea} resetPoints={props.resetPoints}/>
+        <GlobeComponent globeElement={globeElement} windowWidth={windowWidth} shiftAmount={shiftAmount} onGlobeClick={onGlobeClick} onGlobeRightClick={onGlobeRightClick} globeSelectedArea={props.globeSelectedArea} points={props.points}/>
+        <MenuComponent points={props.globeSelectedArea} resetPoints={props.resetPoints} analysis={props.analysis}/>
     </>;
 };
 
@@ -116,7 +135,8 @@ const GlobeComponent = (props) => {
             onGlobeRightClick={props.onGlobeRightClick}
             polygonsData={props.globeSelectedArea}
             polygonCapColor={() => 'rgba(200, 0, 0, 0.25)'}
-            polygonSideColor={() => 'rgba(0, 100, 0, 0.0)'}
+            polygonsAltitude={0}
+            polygonsTransitionDuration={0}
         />
     </div>;
 }
