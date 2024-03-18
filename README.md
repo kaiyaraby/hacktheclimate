@@ -74,6 +74,23 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+The aim of this project is to present a framework for resource assessment, to enable to developers to use environmental data to identify high-value locations for wind farms.
+The user can select an area over which to assess several KPIs including:
+- Wind speed
+  - Mean
+  - Max
+  - Min
+  - Standard Deviation
+  - Wind rose
+    
+- Access
+    - Expected delay time
+    - Probability of instant access
+      
+- Availability
+- Downtime
+- Annual Energy Production
+- Operation & Maintenance Cost per kW
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
@@ -104,6 +121,10 @@ _For more examples, please refer to the [Documentation](https://example.com)
 
 <!-- Modelling -->
 ## Modelling
+### Access Modelling
+
+
+
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
