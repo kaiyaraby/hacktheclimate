@@ -39,20 +39,20 @@ def timeseries_area_query(min_longitude, max_longitude, min_latitude, max_latitu
     }
   }
   response = requests.post(api_url, data=json.dumps(request), headers=headers)
-  return response.json()
+  return response
 
-# Example usage:
-min_longitude = 10
-max_longitude = 10.1
-min_latitude = 45
-max_latitude = 45.1
-start_date = "20220101"
-end_date = "20220131"
-vars_4d = ["wsp","wdir","tk"] # Can be empty []
-vars_3d = ["swdown","t2"]
-heights = [80,240] # Must not be empty if vars_4d is not empty
-api_key = "insert-your-key"
+# # Example usage:
+# min_longitude = 10
+# max_longitude = 10.1
+# min_latitude = 45
+# max_latitude = 45.1
+# start_date = "20220101"
+# end_date = "20220131"
+# vars_4d = ["wsp","wdir","tk"] # Can be empty []
+# vars_3d = ["swdown","t2"]
+# heights = [80,240] # Must not be empty if vars_4d is not empty
+# api_key = "insert-your-key"
 
-response = timeseries_area_query(min_longitude, max_longitude, min_latitude, max_latitude, start_date, end_date, vars_4d, vars_3d, heights, api_key)
-print("Timeseries Area Query: ")
-print(response)
+# response = timeseries_area_query(min_longitude, max_longitude, min_latitude, max_latitude, start_date, end_date, vars_4d, vars_3d, heights, api_key)
+# print("Timeseries Area Query: ")
+# print(response)

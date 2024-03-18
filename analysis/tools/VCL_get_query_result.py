@@ -20,15 +20,15 @@ def get_query_result(query_id, api_key, records_per_page, page_number):
         "api_key": api_key
     }
     response = requests.get(api_url, headers=headers)
-    return response.json()
 
-# Example usage
-api_key = "insert-your-key"
-query_id = "0f9de2dd-ebb1-4218-bf74-7166215e8225"
-records_per_page = 500
-page_number = 1
+    return response
+# # Example usage
+# api_key = "insert-your-key"
+# query_id = "0f9de2dd-ebb1-4218-bf74-7166215e8225"
+# records_per_page = 500
+# page_number = 1
 
-query_result = get_query_result(query_id, api_key, records_per_page, page_number)
+# query_result = get_query_result(query_id, api_key, records_per_page, page_number)
 
-print("Query Result: ")
-print(query_result)
+# print("Query Result: ")
+# print(query_result)

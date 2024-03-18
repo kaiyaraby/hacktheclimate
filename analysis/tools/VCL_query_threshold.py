@@ -36,7 +36,7 @@ def threshold_query(min_longitude, max_longitude, min_latitude, max_latitude, st
   }
 
   response = requests.post(api_url, data=json.dumps(request), headers=headers)
-  return response.json()
+  return response
 
 # Example usage:
 min_longitude = 10

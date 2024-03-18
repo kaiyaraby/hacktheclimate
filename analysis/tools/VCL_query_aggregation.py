@@ -33,7 +33,7 @@ def aggregation_query(min_longitude, max_longitude, min_latitude, max_latitude, 
     "selectedFunction": aggregation
   }
   response = requests.post(api_url, data=json.dumps(request), headers=headers)
-  return response.json()
+  return response
 
 def construct_aggregation_dict(agg_functions, vars_3d, vars_4d, heights):
   """
@@ -91,15 +91,15 @@ agg_functions = ["AVG", "MAX"] #, "MIN", "SD"] # At least one function is requir
 
 # Here you can either use the construct_aggregation_dict (same variables and heights for all aggregation functions)
 #                          or construct_aggregation_dict_open (different variables and heights for each aggregation function)
-vars_3d = ["hgt", "t2"]
-vars_4d = ["wsp", "tk"] # Can be empty
-heights = [100, 200] # Must not be empty if 4D variables are used
-#aggregation = construct_aggregation_dict(agg_functions, vars_3d, vars_4d, heights)
+vars_3d = ["xland"]
+vars_4d = ["wsp", "wdir"] # Can be empty
+heights = [125, 150] # Must not be empty if 4D variables are used
+aggregation = construct_aggregation_dict(agg_functions, vars_3d, vars_4d, heights)
 
-vars_3d_list = [["hgt", "t2"], ["swdown", "tc2"]]
-vars_4d_list = [["wsp", "tk"], ["qvapor", "tc"]]
-heights_list = [[100, 200], [80, 240]]
-aggregation = construct_aggregation_dict_open(agg_functions, vars_3d_list, vars_4d_list, heights_list)
+# vars_3d_list = [["hgt", "t2"], ["swdown", "tc2"]]
+# vars_4d_list = [["wsp", "tk"], ["qvapor", "tc"]]
+# heights_list = [[100, 200], [80, 240]]
+# aggregation = construct_aggregation_dict_open(agg_functions, vars_3d_list, vars_4d_list, heights_list)
 
 api_key = "insert-your-key"
 

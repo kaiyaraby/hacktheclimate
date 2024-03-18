@@ -1,5 +1,9 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def get_query_status(query_id,api_key):
     """
@@ -18,12 +22,13 @@ def get_query_status(query_id,api_key):
         "api_key": api_key
     }
     response = requests.get(api_url, headers=headers)
-    return response.json()
+    return response
 
-# Example usage
-api_key = "insert-your-key"
-query_id = "0f9de2dd-ebb1-4218-bf74-7166215e8225"
+# # Example usage
 
-response = get_query_status(query_id, api_key)
-print("Query Status: ")
-print(response)
+# api_key = os.environ["API_SECRET_KEY"]
+# query_id = "0f9de2dd-ebb1-4218-bf74-7166215e8225"
+
+# response = get_query_status(query_id, api_key)
+# print("Query Status: ")
+# print(response)

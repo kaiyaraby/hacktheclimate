@@ -33,18 +33,18 @@ def timeseries_query(latitude, longitude, start_date, end_date, vars_4d, vars_3d
     "heights": heights # Must not be empty if vars_4d is not empty
   }
   response = requests.post(api_url, data=json.dumps(request), headers=headers)
-  return response.json()
+  return response
 
-# Example usage:
-latitude = 45
-longitude = 10
-start_date = "2010-01-01"
-end_date = "2024-01-30"
-vars_4d = ["wsp","wdir"]
-vars_3d = ["swdown","t2"]
-heights = [80,240]
-api_key = "insert-your-key"
+# # Example usage:
+# latitude = 45
+# longitude = 10
+# start_date = "2010-01-01"
+# end_date = "2024-01-30"
+# vars_4d = ["wsp","wdir"]
+# vars_3d = ["swdown","t2"]
+# heights = [80,240]
+# api_key = "insert-your-key"
 
-response = timeseries_query(latitude, longitude, start_date, end_date, vars_4d, vars_3d, heights, api_key)
-print("Timeseries Query: ")
-print(response)
+# response = timeseries_query(latitude, longitude, start_date, end_date, vars_4d, vars_3d, heights, api_key)
+# print("Timeseries Query: ")
+# print(response)
