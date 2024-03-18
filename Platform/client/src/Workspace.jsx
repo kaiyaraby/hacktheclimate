@@ -7,6 +7,21 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
+const accessCoverage = {
+    type: "feature",
+    geometry: {
+        type: "Polygon",
+        coordinates: [
+            [
+                [11.0, 51.0],
+                [-4.0, 51.0],
+                [-4.0, 61.0],
+                [11.0, 61.0],
+            ]
+        ]
+    }
+};
+
 const WorkspaceComponent = (props) => {
 
     const [points, setPoints] = useState([]);
@@ -19,10 +34,10 @@ const WorkspaceComponent = (props) => {
         setGlobeSelectedArea([{
             type: "feature",
             geometry: {
-                "type": "Polygon",
+                type: "Polygon",
                 coordinates: [points]
             }
-        }]);
+        }, accessCoverage]);
         console.log(globeSelectedArea);
     };
 
@@ -40,9 +55,9 @@ const MenuComponent = (props) => {
         position: "absolute",
         width: "40%",
         height: "100%",
-        color: "white",
         left: "2%",
         border: "3px solid white",
+        backgroundColor: "white",
     }}>
         <Container className="m-auto m-2">
             <Row>
@@ -100,8 +115,8 @@ const GlobeComponent = (props) => {
             onGlobeClick={props.onGlobeClick}
             onGlobeRightClick={props.onGlobeRightClick}
             polygonsData={props.globeSelectedArea}
-            polygonCapColor={() => 'rgba(200, 0, 0, 0.6)'}
-            polygonSideColor={() => 'rgba(0, 100, 0, 0.15)'}
+            polygonCapColor={() => 'rgba(200, 0, 0, 0.25)'}
+            polygonSideColor={() => 'rgba(0, 100, 0, 0.0)'}
         />
     </div>;
 }
