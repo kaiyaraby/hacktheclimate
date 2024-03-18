@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "bootstrap": "^5.3.3",
-    "globe.gl": "^2.32.2",
-    "react-bootstrap": "^2.10.2",
-    "react-globe.gl": "^2.27.2"
-  }
-}
