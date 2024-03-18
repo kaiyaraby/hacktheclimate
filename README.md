@@ -122,7 +122,7 @@ _For more examples, please refer to the [Documentation](https://example.com)
 
 <!-- Modelling -->
 ## Modelling
-### Access Modelling
+
 When unscheduled maintenance or repairs need to be carried out, vessels may only be sent out when the weather conditions are safe for a vessel, for the time needed to travel and carry out the operation.
 \noindent We may define three distinct states: 
 \begin{itemize}
@@ -137,79 +137,25 @@ When unscheduled maintenance or repairs need to be carried out, vessels may only
 Discrete Time Markov Chains (DTMCs) are characterised by a discrete time state space, where at each time the state may take a single value. In this report, we focus on two state models, as shown below. 
 
 <img src="images/flowchart.png" alt="Logo" width="150" height="150">
-\noindent 
 From a current state we may remain or move to the alternate state with probabilities determined by their related transition matrix:
+
+
 $$
 \pi = \begin{bmatrix}
     P_{0,0} & P_{0,1}\\
     P_{1,0} & P_{1,1}
 \end{bmatrix}.
 $$
-\subsection{Markov Access Model}
-We first model the accessibility, $\mathbf{X} = \{X_1, X_2, \cdots, X_n\}$, where $X_t=1$ indicates that there is an access window beginning at time $t$. This model assumes a constant probability of accessibility, $Pr(X_t=1)=P$, and of transition between states
-$$Pr(X_t=i|X_{t-1}=j)=P_{i,j}.$$
-\subsubsection{Probability of Instant Access}
-For $0.1\leq P
-\leq 0.9$, we may construct a confidence interval for $P$ as $(P_L, P_U)$ \cite{Bedrick1989, crow1979approximate}, where the limits are defined as
-\begin{align}
-    P_U&=\frac{S+\frac{z_{\frac{\alpha}{2}}}{2}+\left[\frac{1}{2}+z_\frac{\alpha}{2}\sqrt{h\left(\hat{\theta}\right)\left\{S+\frac{1}{2}-\frac{\left(S+\frac{1}{2}\right)^2}{n}+\frac{z_\frac{\alpha}{2}^2h\left(\hat{\theta}\right)}{4}\right\}}\right]}
-    {n+z_\frac{\alpha}{2}^2h\left(\hat{\theta}\right)}\\
-        P_L&=\frac{S+\frac{z_{\frac{\alpha}{2}}}{2}-\left[\frac{1}{2}+z_\frac{\alpha}{2}\sqrt{h\left(\hat{\theta}\right)\left\{S-\frac{1}{2}-\frac{\left(S-\frac{1}{2}\right)^2}{n}+\frac{z_\frac{\alpha}{2}^2h\left(\hat{\theta}\right)}{4}\right\}}\right]}
-    {n+z_\frac{\alpha}{2}^2h\left(\hat{\theta}\right)},
-\end{align}
-where $S=\sum^n_{i=1}X_i$ denotes the number of observed access points, $z_{1-\frac{\alpha}{2}}$ is the $(1-\frac{\alpha}{2})^{th}$ quantile of the standard normal distribution and \begin{align}
-    h(\theta)=1+\frac{2\theta}{1-\theta}\frac{1-(1-\theta^n)}{n(1-\theta)}
-\end{align} is a function of the product-moment correlation coefficient between adjacent states $X_k$ and $X_{k+1}$, given by $\theta=\frac{P_{1,1}-P}{1-P}$ \cite{Bedrick1989}.\\
-\newline
-If $P$, or $1-P$ is very small (here we consider 0.1 to be an appropriate threshold), then this method is not appropriate and we instead utilise a modified Anderson-Burstein interval \cite{crow1979validation}.
-Since $S$ is assumed to be Poisson-distributed with parameter $nP$, then we may write
-\begin{align}
-    P_U&=\hat{P}+\left(P_{UI}-\hat{P}\right)\sqrt{1+\frac{2\hat{\theta}}{1-\hat{
-    \theta}}}\\
-    P_L &= \hat{P}-\left(\hat{P}-P_{LI}\right)\sqrt{1+\frac{2\hat{\theta}}{1-\hat{
-    \theta}}},
-\end{align}
-where $(L,U)$ is the Pearson-Hartley confidence interval for the Poisson mean with parameter $nP$, and
-\begin{align}
-    P_{UI} &=\frac{U}{n+d+\frac{1}{2}(U-S)}\\
-    P_{LI} &= \frac{L}{n-\frac{1}{2}(S-1-L)}
-\end{align}
-are the Anderson-Burstein confidence limits  with adjustment factor $d$ \cite{anderson1967approximating, anderson1968approximating}.
-\subsubsection{Expected Delay}
-The expected delay, $\lambda$, is given by 
-\begin{align}
-    \lambda &= P\lambda_1+(1-P)\lambda_0\\
-    &= P\cdot 0+(1-P)\lambda_0\\
-    &= (1-P)\lambda_0,
-\end{align}
-where $\lambda_0$ is calculated as
-\begin{align}
-    &\lambda_0 = P_{0,0}\cdot(\lambda_0+1)+P_{0,1}\cdot 1\\
-    \Rightarrow &\lambda_0= 1+P_{0,0}\lambda_0\\
-    \Rightarrow &\lambda_0(1-P_{0,0})=1\\
-    \Rightarrow &\lambda_0=\frac{1}{1-P_{0,0}}\\
-    \Rightarrow&\lambda_0=\frac{1}{P_{0,1}}.
-\end{align}
-The expected value for $\lambda_0$ is given by the sample mean of wait times from inaccessible states, $\hat{\lambda}_0$. To assess the variance of this parameter we then consider the variance of its inverse $P_{0,1}.$ \\
-\newline
-Confidence intervals for the transition matrix properties are outlined as \cite{Wan2020}
-\begin{align}
-    P_{i,j}^U &= p_{i,j}+ z_{1-\frac{\alpha}{2}}\sqrt{\frac{p_{i,j}(1-p_{i,j})}{f_i}}\\
-    P_{i,j}^L &= p_{i,j}- z_{1-\frac{\alpha}{2}}\sqrt{\frac{p_{i,j}(1-p_{i,j})}{f_i}}
-\end{align}
-where $f_i = \sum^n_{k=1} \mathbb{I}(X_k = i)$ is the number of observed values of state $i$. 
 
-\noindent We may then calculate the variance for $\lambda=\frac{1}{P_{0,1}}$ \cite{Wolter2006}
-\begin{align}
-    V\left(\frac{1}{P_{0,1}}\right)&=\left(\frac{1}{\hat{P}_{0,1}}\right)^2\left[\frac{V(1)}{1^2}+\frac{V(\hat{P}_{0,1})}{\hat{P}_{0,1}^2}-\frac{2C\left(1,\hat{P}_{0,1}\right)}{1\cdot \hat{P}_{0,1}}\right]\\
-    &=\frac{1}{\hat{P}_{0,1}^2}\frac{V(\hat{P}_{0,1})}{\hat{P}_{0,1}^2}\\
-    &=\frac{V(\hat{P}_{0,1})}{\hat{P}_{0,1}^4}\\
-    &=\frac{SE(\hat{P}_{0,1})^2}{\hat{P}^4_{0,1}}\\
-    &=\frac{\left(\frac{P^U_{0,1}-P_{0,1}^L}{2z_{1-\frac{\alpha}{2}}}\right)^2}{\hat{P}_{0,1}^4}\\
-    &=\frac{(P_{0,1}^U-P_{0,1}^L)^2}{4\hat{P}_{0,1}^4z^2_{1-\frac{\alpha}{2}}}.
-\end{align}
-The order of this model is also entirely linear, but with a smaller factor, thus reducing the computation time from the empirical.
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+We use this chain to model the accessibility,  $\mathbf{X} = \{X_1, X_2, \cdots, X_n\},$  where $X_t=1$ indicates that there is an access window beginning at time $t$.
+
+This model assumes a constant probability of accessibility, $Pr(X_t=1)=P$, and of transition between states
+
+
+$$Pr(X_t=i|X_{t-1}=j)=P_{i,j}.$$
+
+
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
