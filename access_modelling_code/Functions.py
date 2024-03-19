@@ -1,4 +1,78 @@
 # -----------------------------------------------------------------------------------------
+# **********************************KPIs***************************************
+# -----------------------------------------------------------------------------------------
+
+class farm_level_assessment:
+    
+    def __init__(self, turbine_parameters, loc, v):
+        (self.lon, self.lat) = loc
+        self.v_ts = v
+        [self.wsps, self.rated_power, self.area, self.eta, self.Cp, self.hub_height] = turbine_parameters
+        
+    def downtime_and_cost(self):
+        cost = 0
+        downtime = 0
+
+        situations = [0,0,1,2,3,1]
+        delay_situations = [(2,2), (3,2), (4,3), (5,4)]
+        exp_delays = np.zeros(4)
+        
+        for i, sitch in enumerate(delay_situations):
+            (t_req, h_th) = sitch
+            dm = Discrete_Model(point_df, h_th, t_req)
+            exp_delays[i] = dm.calc_expected_delay()
+    
+        for i, op in enumerate(ops):
+            dist = distance_to_coast(lat, long)
+            dist = distance_to_coast(lat, long)
+            h_th = hs[ves[i]]
+            travel_time = dist/80
+            t = int(t_reqs[i]+travel_time)
+            downtime += (exp_delays[situations[i]]+t_reqs[i]+travel_time)*frs[i]
+            cost += costs[i]*frs[i]
+            
+        self.cost = cost
+        self.downtime = downtime
+        return (downtime, cost)
+        
+    def operation(self):
+        v = self.v_ts
+        (cut_in, cut_out, rated_wsp) = self.wsps
+        perc_at_rated = len(np.where(v>=rated_wsp))/len(v)
+        perc_operating = len(v[(np.where(v >= cut_in)) and (np.where(v <= cut_out))])
+        self.power_ts = self.power()
+        
+    def power(self):
+        p = np.zeros(len(self.v_ts))
+        (cut_in, cut_out, rated_wsp) = self.wsps
+        for i, u in enumerate(self.v_ts):
+            if u>cut_in and u<=rated_wsp:
+                p[i] = 0.5*self.area*self.Cp*rho*(u**3)*eta
+            elif u>rated_wsp and u<=cut_out:
+                p[i] = 0.5*self.area*self.Cp*rho*(rated_wsp**3)*eta
+        self.power_ts = p
+        return self.power_ts
+
+    def availability(self):
+        (downtime, cost) = self.downtime_and_cost()
+        power_prod = self.power()
+        prod_hours = len(np.where(power_prod!=0)[0])
+        total_hours = 8760
+        self.availability = (prod_hours-downtime)/total_hours
+        return self.availability
+        
+    def aep(self):
+        availability = self.availability()
+        tpp = np.sum(self.power_ts)
+        self.aep = tpp*availability
+        return self.aep
+
+    def cost_per_kw(self):
+        aep = self.aep()
+        self.cost_per_kw = self.cost*8760*self.availability/(aep/10**3)
+        return self.cost_per_kw
+
+# -----------------------------------------------------------------------------------------
 # **********************************Access Modelling***************************************
 # -----------------------------------------------------------------------------------------
 
