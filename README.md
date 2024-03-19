@@ -119,6 +119,11 @@ The user may output classical outputs to assess wind resource for a single point
 or assess a KPI such as downtime across a wider geospatial dataset
 <img src="images/Downtime (hours).svg" alt="Logo">
 
+For turbine-specific output, the user may input turbine parameters to calculate Annual Energy Production, and O&M cost per kW per year.
+<img src="images/AEY.svg" alt="Logo">
+<img src="images/OM_cost.svg" alt="Logo">
+
+
 For more examples, please refer to the [Website](https://jolpi.ca/wind.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -224,6 +229,16 @@ $$Pr(X_t=i|X_{t-1}=j)=P_{i,j}.$$
 ## Contact
 
 Kaiya Raby - kaiya.raby@strath.ac.uk
+
+Kim Janovski - kim.janovski@strath.ac.uk      University of Strathclyde - Wind & Marine Energy Systems and Structures CDT
+
+Pauline Brusset
+
+Edward James Hamilton
+
+Jess Perry
+
+--
 
 Project Link: [https://github.com/hacktheclimate]
 

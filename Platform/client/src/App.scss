@@ -55,7 +55,7 @@ body, html {
 }
 
 .bg2 {
-    background-image: url('./Images/turbines.jpg');
+    background-image: url('./Images/turbinepurple.webp');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -87,8 +87,9 @@ body, html {
     position: absolute;
     font-size: 70px;
     font-weight: 90;
-    left: 65%;
-    bottom: 60%;
+    left: 10%;
+    bottom: 50%;
+    color: white;
 }
 
 .ohmy {
@@ -111,6 +112,21 @@ body, html {
 .loading-page {
     color : black;
     background-color: black;
+}
+
+.loading-page2 {
+    color : black;
+    background-color: black;
+    position: absolute;
+    right: 10%;
+    left: 10%;
+}
+
+.msg{
+    position: absolute;
+    right: 15%;
+    left: 15%;
+    top:20%;
 }
 
 .muted {
@@ -137,6 +153,11 @@ body{
     border-radius: 15;
 }
 
+.card2 {
+    padding: 15px;
+    border-radius: 15;
+}
+
 .search{
     padding: 15px;
     width: 30%;
@@ -159,6 +180,17 @@ body{
     #background-color: #29008a;
     #box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
     #background-color: black;
+}
+
+.bg3 {
+    background-color: black;
+    background-size: cover;;
+}
+
+.box{
+    background-color: black;
+    color: white;
+    padding: 10px;
 }
 
 

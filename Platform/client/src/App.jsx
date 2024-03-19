@@ -15,6 +15,9 @@ import { LinkContainer } from "react-router-bootstrap";
 import { TeamComponent } from "./Team";
 import { WorkspaceComponent } from "./Workspace";
 import { LandingComponent } from "./Landing";
+import { IndepthComponent } from "./Indepth";
+import { DetailedAnalysisComponent } from "./DetailedAnalysis";
+import { AreaAnalysisComponent } from "./AreaAnalysis";
 import './App.scss';
 
 // import { ReactComponent as Superlogo } from './Images/penguinlogo.svg';
@@ -138,7 +141,7 @@ const NavbarComponent = () => {
             </Navbar.Brand>
         </LinkContainer>
         <LinkContainer to="/">
-            <Navbar.Brand href="#home">PengWind</Navbar.Brand>
+            <Navbar.Brand href="/">PengWind</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -148,6 +151,9 @@ const NavbarComponent = () => {
             </LinkContainer>
             <LinkContainer to="/Workspace">
                 <Nav.Link href="/Workspace">Workspace</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Indepth">
+                <Nav.Link href="/Indepth">In Depth Analysis</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/Team">
                 <Nav.Link href="/Team">About</Nav.Link>
@@ -182,7 +188,19 @@ const router = createBrowserRouter([
             {
                 path: "Workspace",
                 element: <WorkspaceComponent />
-            }
+            },
+            {
+                path: "Indepth",
+                element: <IndepthComponent />
+            },
+            {
+                path: "DetailedAnalysis",
+                element: <DetailedAnalysisComponent />
+            },
+            {
+                path: "AreaAnalysis",
+                element: <AreaAnalysisComponent />
+            },
         ]
     }
 ]);
