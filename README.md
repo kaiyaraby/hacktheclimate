@@ -231,8 +231,10 @@ $$Pr(X_t=i|X_{t-1}=j)=P_{i,j}.$$
 Kaiya Raby - kaiya.raby@strath.ac.uk
 Kim Janovski - kim.janovski@strath.ac.uk
 --
-
-
+Pauline Brusset
+Edward James Hamilton
+Jess Perry
+--
 
 Project Link: [https://github.com/hacktheclimate]
 
