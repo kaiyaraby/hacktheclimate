@@ -2,3 +2,7 @@
 .DS_STore
 .python-version
 **/*.pyc
+*.dll
+**/bin/
+**/obj/
+**/node_modules/
