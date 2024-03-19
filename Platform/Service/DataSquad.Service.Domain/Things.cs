@@ -61,11 +61,14 @@ namespace DataSquad.Service.Domain
         public float MeanAvailability { get; set; }
         public float MeanCostPerKiloWatt { get; set; }
         public float MeanDowntime { get; set; }
+        public float MeanAnnualExpectedPower { get; set; }
     }
 
     public class TurbineAnalysisResult
     {
         public List<GeoPoint> Region { get; set; }
+
+        public int PointCount { get; set; }
 
         public float MinAvailability { get; set; }
         public float MaxAvailability { get; set; }
@@ -78,11 +81,17 @@ namespace DataSquad.Service.Domain
         public float MinDowntime { get; set; }
         public float MaxDowntime { get; set; }
         public float MeanDowntime { get; set; }
+
+        public float MinAnnualExpectedPower { get; set; }
+        public float MaxAnnualExpectedPower { get; set; }
+        public float MeanAnnualExpectedPower { get; set; }
     }
 
     public class AccessibilityAnalysisResult
     {
         public List<GeoPoint> Region { get; set; }
+
+        public int PointCount { get; set; }
 
         public float MinDepth { get; set; }
         public float MaxDepth { get; set; }

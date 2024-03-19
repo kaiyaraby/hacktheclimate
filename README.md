@@ -31,14 +31,13 @@
   <h3 align="center">PengWind</h3>
 
   <p align="center">
-    Python package using stochastic methods to estimate accessibility traits based on historic wave height data.
+    Python package using stochastic methods to estimate resource quality, through traditional methods combined with a novel Discrete Time Markov Chain Model to model weather window and vessel access. -->
     <br />
-    <a href="https://github.com/kaiyaraby/statistical_access_modelling"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/kaiyaraby/statistical_access_modelling/Examples_and_validation/Example">View Demo</a>
+    <a href="https://github.com/kaiyaraby/hacktheclimate/vestas_data_collection">Data Collection</a>
+    .
+    <a href="https://jolpi.ca/wind.html">View Website</a>
     ·
-    <a href="https://github.com/kaiyaraby/statistical_access_modelling">Request Feature</a>
+    <a href="https://github.com/kaiyaraby/hacktheclimate/access_modelling_code">View Modelling</a>
   </p>
 </div>
 
@@ -122,21 +121,66 @@ _For more examples, please refer to the [Documentation](https://example.com)
 
 <!-- Modelling -->
 ## Modelling
+Our key output is Operation & Maintenance Cost per Kw per year. To output this, users have the choice of using a 12MW reference turbine (NREL 2019), and failure/cost data as outlined in Carrol et al (2016).
+The number of each type of repairs, their probability of occurrence, and their associated required operation time, vessel (and therefore associated threshold safe wave height and wind speed), and cost of repair are calculated. 
+Thus cost is calculated as
 
+$$Cost = \sum^M_{m=1} \lambda_m \cdot C_m$$
+
+and downtime 
+
+$$Downtime = \sum^M_{m=1} \lambda_m \cdot T_{op}(m) + T_{travel}(m, loc) + \mathbb{E}\left[T_{delay}\left(T_{op}(m)+T_{travel}(m, loc)\right)\right],$$
+
+where
+$m$ is the type of operation or maintenance required, $\lambda_m$ is the number of expected times $m$ must be carried out annually, $T_{op}(m)$ is the time required to carry out operation $m$,
+$$T_{travel}(m, loc) = 2\cdot\frac{\text{Distance between location and coastline}}{\text{Speed of vessel required for operation } m}$$
+is the required travel time to the location and 
+
+$$\mathbb{E}\left[T_{delay}\left(T_{op}(m)+T_{travel}(m, loc)\right)\right]$$ 
+
+is the expected delay time until a weather window the length of travel time and operation time occurs.
+
+The time to travel to and from the asset is calculated based on its distance to the closest coast line, and speed of relevant vessel. A relevant extension would allow calculation of distance to closest port.
+
+This time, and time to carry out operation are combined. This total vessel trip time is then feed into a Discrete Markov Chain Model, which calculates the expected time until a weather window will be reached where this trip can be safely conducted. This safe window requires that the threshold wave height and wind speed for the vessel are not exceeded for the entire duration. The Markov Chain Model is briefly described later in this section.
+
+This downtime is summed with inactive power hours (where wind speed is below cut-in, or above cut-out speed), and divided by total hours to calculate availability
+
+$$Availability = \frac{\text{Number of operating hours}-\text{Downtime}}{8760}.$$
+
+Power for each hour is calculated using the power curve for the NREL 12MW reference turbine (or variable input) with 
+
+
+$$
+P = \begin{cases}
+0 & \text{ if } v< v_{cut-in}\\
+\frac{1}{2}AC_p\rho(v^3)\eta & \text{ if } v_{cut-in}\leq v<v_{rated}\\
+P_{rated} & \text{ if } v_{rated}\leq v<v_{cut_out}\\
+0 & \text{ if } v \geq v_{cut-out}
+\end{cases}.
+$$
+
+
+The average energy yield is then scaled to remove estimated downtime
+$$AEY = \sum^T_{t=1} P_t \cdot H_t \cdot \frac{\text{Number of Operating Hours}-\text{Downtime}}{\text{Number of Operating Hours}}.$$
+
+Finally, the estimated cost of Operation and Maintenance is calculated as 
+
+$$C/kw/yr = \frac{\text{Cost}}{\text{AEY}}.$$
+
+### Markov Chain Model
 When unscheduled maintenance or repairs need to be carried out, vessels may only be sent out when the weather conditions are safe for a vessel, for the time needed to travel and carry out the operation.
-\noindent We may define three distinct states: 
-\begin{itemize}
-    \item 0: Weather conditions unsuitable
-    \item 1a: Access possible, but insufficient time remaining to carry out repair
-    \item 1b: Access possible, and sufficient time remaining to carry out repair
-\end{itemize}
+We may define three distinct states: 
+- 0: Weather conditions unsuitable
+- 1a: Access possible, but insufficient time remaining to carry out repair
+- 1b: Access possible, and sufficient time remaining to carry out repair
 
-<img src="images/flowchart.png" alt="Logo" width="150" height="150">
 
-\subsubsection{Markov Chain Models}
+<img src="images/flowchart.jpeg" alt="Logo" width="300" height="150">
+
 Discrete Time Markov Chains (DTMCs) are characterised by a discrete time state space, where at each time the state may take a single value. In this report, we focus on two state models, as shown below. 
 
-<img src="images/flowchart.png" alt="Logo" width="150" height="150">
+<img src="images/markov_chain.png" alt="Logo" width="300" height="150">
 From a current state we may remain or move to the alternate state with probabilities determined by their related transition matrix:
 
 
