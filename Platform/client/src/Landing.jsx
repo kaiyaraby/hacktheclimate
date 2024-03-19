@@ -10,7 +10,7 @@ const LandingComponent = () => {
     <div className="bg" />
 
     <div class='text-on-image'>
-        <heady class='headyurl'> jolpi.ca/wind.html </heady><br/>
+        <heady class='headyurl'> wind.jolpi.ca </heady><br/>
         <heady class='heady'> Offshore Wind Analysis Tool </heady>
         <p class='ohmy'>
         The aim of this project is to present a framework for resource assessment, 
