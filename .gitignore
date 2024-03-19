@@ -2,3 +2,5 @@
 .DS_STore
 .python-version
 **/*.pyc
+analysis/input_data/timeseries_area_wind_speed/area*
+analysis/area_wind_speed_data*.csv
