@@ -1,6 +1,6 @@
 import { React, useState, useEffect, useRef } from "react";
 import { getExampleData } from './Service/Example';
-import { getAnalysis } from "./Service/Analysis";
+import { getAccessibilityAnalysis, getTurbineAnalysis } from "./Service/Analysis";
 import Globe from "react-globe.gl";
 import EarthTexture from "./earthtexture.jpg";
 import Container from "react-bootstrap/Container";
@@ -30,20 +30,29 @@ const WorkspaceComponent = (props) => {
 
     const [points, setPoints] = useState([]);
     const [globeSelectedArea, setGlobeSelectedArea] = useState([]);
-    const [analysis, setAnalysis] = useState({});
+    const [accessibilityAnalysis, setAccessibilityAnalysis] = useState({});
+    const [turbineAnalysis, setTurbineAnalysis] = useState({});
     const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
-        const updateAnalysis = async () => {
+        const updateTurbineAnalysis = async () => {
             const requestBody = points.map((x) => ({
                 latitude: x[1],
                 longitude: x[0]
             }));
-            const response = await getAnalysis(requestBody);
-            setAnalysis(response);
+            const response = await getTurbineAnalysis(requestBody);
+            setTurbineAnalysis(response);
         };
-        console.log(points);
-        updateAnalysis();
+        const updateAccessibilityAnalysis = async () => {
+            const requestBody = points.map((x) => ({
+                latitude: x[1],
+                longitude: x[0]
+            }));
+            const response = await getAccessibilityAnalysis(requestBody);
+            setAccessibilityAnalysis(response);
+        }
+        updateAccessibilityAnalysis();
+        updateTurbineAnalysis();
     }, [points, refresh]);
 
     const addPoint = (lat, lng) => {
@@ -65,7 +74,7 @@ const WorkspaceComponent = (props) => {
         setGlobeSelectedArea([]);
     };
 
-    return <RootInterfaceComponent analysis={analysis} globeSelectedArea={globeSelectedArea} points={points} addPoint={addPoint} resetPoints={resetPoints}/>;
+    return <RootInterfaceComponent accessibilityAnalysis={accessibilityAnalysis} turbineAnalysis={turbineAnalysis} globeSelectedArea={globeSelectedArea} points={points} addPoint={addPoint} resetPoints={resetPoints}/>;
 };
 
 const MenuComponent = (props) => {
@@ -77,14 +86,14 @@ const MenuComponent = (props) => {
                 height: "80%",
                 left: "5%",
                 top: "20%",
-                overflowY:scroll,
+                overflowY: "scroll",
                 }}>
                 <Card.Body>
                     <Card.Title style={{textAlign:'center'}}>Select Characteristics</Card.Title>
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            
-                        
+
+
                     <Accordion defaultActiveKey={['0']} alwaysOpen class='accord' style={{background: 'dark'}}>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Accessibility</Accordion.Header>
@@ -254,7 +263,7 @@ const RootInterfaceComponent = (props) => {
     }
     return <>
         <GlobeComponent globeElement={globeElement} windowWidth={windowWidth} shiftAmount={shiftAmount} onGlobeClick={onGlobeClick} onGlobeRightClick={onGlobeRightClick} globeSelectedArea={props.globeSelectedArea} points={props.points}/>
-        <MenuComponent points={props.globeSelectedArea} resetPoints={props.resetPoints} analysis={props.analysis}/>
+        <MenuComponent points={props.globeSelectedArea} resetPoints={props.resetPoints} accessibilityAnalysis={props.accessibilityAnalysis} turbineAnalysis={props.turbineAnalysis}/>
     </>;
 };
 
