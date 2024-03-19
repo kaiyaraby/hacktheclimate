@@ -1,3 +1,7 @@
+.env
+.DS_STore
+.python-version
+**/*.pyc
 *.dll
 **/bin/
 **/obj/

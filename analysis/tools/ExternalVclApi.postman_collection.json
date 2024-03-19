@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "dac5537c-474c-415c-8635-fab8834cdcd3",
+		"name": "ExternalVclApi TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "3137294"
+	},
+	"item": [
+		{
+			"name": "POST TimeSeries",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"value": "insert-your-api-key",
+						"key": "api_key"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"latitude\": 46.90,\r\n  \"longitude\": -78.286,\r\n  \"startDate\": \"2011-01-01T00:00:00.000Z\",\r\n  \"endDate\": \"2024-01-30T15:11:51.021Z\",\r\n  \"vars4D\": [\r\n    \"wsp\"\r\n  ],\r\n  \"vars3D\": [\r\n    \"t2\"\r\n  ],\r\n  \"heights\": [\r\n    21.3,\r\n    80\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://public-test.api.vestas.com/public/vestas-climate-library/v1/timeseriesquery"
+			},
+			"response": []
+		},
+		{
+			"name": "POST TimeSeriesArea",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"value": "insert-your-api-key",
+						"key": "api_key"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"minxlat\":41,\r\n    \"minxlong\":-100,\r\n    \"maxxlat\":42,\r\n    \"maxxlong\":-99,\r\n    \"starttime\":\"20220501\",\r\n    \"endtime\":\"20220831\",\r\n    \"selectedVariables\":{\r\n        \"4DVars\":[\"wsp\",\"wdir\",\"tk\"],\r\n        \"zHeights\":[50,150]\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://public-test.api.vestas.com/public/vestas-climate-library/v1/timeseriesareaquery"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Aggregation",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"value": "insert-your-api-key",
+						"key": "api_key"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"maxxlat\":50.1,\r\n    \"maxxlong\":14.4,\r\n    \"minxlat\":50.0,\r\n    \"minxlong\":14.2,\r\n    \"starttime\":\"20230101\",\r\n    \"endtime\":\"20230131\",\r\n    \"selectedFunction\":{\r\n        \"MIN\":{\r\n            \"3DVars\":[\"t2\"]\r\n        }\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://public-test.api.vestas.com/public/vestas-climate-library/v1/aggregationquery"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Threshold",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"value": "insert-your-api-key",
+						"key": "api_key"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"maxxlat\":50.1,\r\n    \"maxxlong\":14.4,\r\n    \"minxlat\":50.0,\r\n    \"minxlong\":14.2,\r\n    \"starttime\":\"2022\",\r\n    \"endtime\":\"2023\",\r\n    \"zHeights\":[20,30,40],\r\n    \"tc_min\":-15,\r\n    \"tc_max\":15\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://public-test.api.vestas.com/public/vestas-climate-library/v1/thresholdquery"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Querystatus",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"value": "insert-your-api-key",
+						"key": "api_key"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"latitude\": 46.90,\r\n  \"longitude\": -78.286,\r\n  \"startDate\": \"2011-01-01T00:00:00.000Z\",\r\n  \"endDate\": \"2024-01-30T15:11:51.021Z\",\r\n  \"vars4D\": [\r\n    \"wsp\"\r\n  ],\r\n  \"vars3D\": [\r\n    \"t2\"\r\n  ],\r\n  \"heights\": [\r\n    21.3,\r\n    80\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://public-test.api.vestas.com/public/vestas-climate-library/v1/querystatus/8e02a907-7af8-4b10-84ca-d09494d02133"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Queryresult Pagination",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"value": "insert-your-api-key",
+						"key": "api_key"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"latitude\": 46.90,\r\n  \"longitude\": -78.286,\r\n  \"startDate\": \"2011-01-01T00:00:00.000Z\",\r\n  \"endDate\": \"2024-01-30T15:11:51.021Z\",\r\n  \"vars4D\": [\r\n    \"wsp\"\r\n  ],\r\n  \"vars3D\": [\r\n    \"t2\"\r\n  ],\r\n  \"heights\": [\r\n    21.3,\r\n    80\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://public-test.api.vestas.com/public/vestas-climate-library/v1/queryresult/8e02a907-7af8-4b10-84ca-d09494d02133/50/1"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Requests",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"value": "insert-your-api-key",
+						"key": "api_key"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://public-test.api.vestas.com/public/vestas-climate-library/v1/requests"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Metadata",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"value": "insert-your-api-key",
+						"key": "api_key"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"latitude\": 46.90,\r\n  \"longitude\": -78.286,\r\n  \"startDate\": \"2011-01-01T00:00:00.000Z\",\r\n  \"endDate\": \"2024-01-30T15:11:51.021Z\",\r\n  \"vars4D\": [\r\n    \"wsp\"\r\n  ],\r\n  \"vars3D\": [\r\n    \"t2\"\r\n  ],\r\n  \"heights\": [\r\n    21.3,\r\n    80\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://public-test.api.vestas.com/public/vestas-climate-library/v1/metadata"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "queryId",
+			"value": "b39d13bf-f42c-45df-a6a4-778ddbbb82f4"
+		}
+	]
+}
