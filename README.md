@@ -171,16 +171,14 @@ $$C/kw/yr = \frac{\text{Cost}}{\text{AEY}}.$$
 
 ### Markov Chain Model
 When unscheduled maintenance or repairs need to be carried out, vessels may only be sent out when the weather conditions are safe for a vessel, for the time needed to travel and carry out the operation.
-\noindent We may define three distinct states: 
-\begin{itemize}
-    \item 0: Weather conditions unsuitable
-    \item 1a: Access possible, but insufficient time remaining to carry out repair
-    \item 1b: Access possible, and sufficient time remaining to carry out repair
-\end{itemize}
+We may define three distinct states: 
+- 0: Weather conditions unsuitable
+- 1a: Access possible, but insufficient time remaining to carry out repair
+- 1b: Access possible, and sufficient time remaining to carry out repair
+
 
 <img src="images/flowchart.png" alt="Logo" width="150" height="150">
 
-\subsubsection{Markov Chain Models}
 Discrete Time Markov Chains (DTMCs) are characterised by a discrete time state space, where at each time the state may take a single value. In this report, we focus on two state models, as shown below. 
 
 <img src="images/flowchart.png" alt="Logo" width="150" height="150">
