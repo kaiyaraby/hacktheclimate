@@ -177,11 +177,11 @@ We may define three distinct states:
 - 1b: Access possible, and sufficient time remaining to carry out repair
 
 
-<img src="images/flowchart.png" alt="Logo" width="150" height="150">
+<img src="images/flowchart.jpeg" alt="Logo" width="300" height="150">
 
 Discrete Time Markov Chains (DTMCs) are characterised by a discrete time state space, where at each time the state may take a single value. In this report, we focus on two state models, as shown below. 
 
-<img src="images/flowchart.png" alt="Logo" width="150" height="150">
+<img src="images/markov_chain.png" alt="Logo" width="300" height="150">
 From a current state we may remain or move to the alternate state with probabilities determined by their related transition matrix:
 
 
