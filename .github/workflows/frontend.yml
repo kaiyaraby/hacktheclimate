@@ -3,6 +3,8 @@ name: Blob storage website CI
 on:
     push:
         branches: [ main ]
+        paths:
+        - Platform/client
 
 jobs:
   build:
