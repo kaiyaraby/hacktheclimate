@@ -122,7 +122,54 @@ _For more examples, please refer to the [Documentation](https://example.com)
 
 <!-- Modelling -->
 ## Modelling
+Our key output is Operation & Maintenance Cost per Kw per year. To output this, users have the choice of using a 12MW reference turbine (NREL 2019), and failure/cost data as outlined in Carrol et al (2016).
+The number of each type of repairs, their probability of occurrence, and their associated required operation time, vessel (and therefore associated threshold safe wave height and wind speed), and cost of repair are calculated. 
+Thus cost is calculated as
 
+$$Cost = \sum^M_{m=1} \lambda_m \cdot C_m$$
+
+and downtime 
+
+$$Downtime = \sum^M_{m=1} \lambda_m \cdot T_{op}(m) + T_{travel}(m, loc) + \mathbb{E}\left[T_{delay}\left(T_{op}(m)+T_{travel}(m, loc)\right)\right],$$
+
+where
+$m$ is the type of operation or maintenance required, $\lambda_m$ is the number of expected times $m$ must be carried out annually, $T_{op}(m)$ is the time required to carry out operation $m$,
+$$T_{travel}(m, loc) = 2\cdot\frac{\text{Distance between location and coastline}}{\text{Speed of vessel required for operation } m}$$
+is the required travel time to the location and 
+
+$$\mathbb{E}\left[T_{delay}\left(T_{op}(m)+T_{travel}(m, loc)\right)\right]$$ 
+
+is the expected delay time until a weather window the length of travel time and operation time occurs.
+
+The time to travel to and from the asset is calculated based on its distance to the closest coast line, and speed of relevant vessel. A relevant extension would allow calculation of distance to closest port.
+
+This time, and time to carry out operation are combined. This total vessel trip time is then feed into a Discrete Markov Chain Model, which calculates the expected time until a weather window will be reached where this trip can be safely conducted. This safe window requires that the threshold wave height and wind speed for the vessel are not exceeded for the entire duration. The Markov Chain Model is briefly described later in this section.
+
+This downtime is summed with inactive power hours (where wind speed is below cut-in, or above cut-out speed), and divided by total hours to calculate availability
+
+$$Availability = \frac{\text{Number of operating hours}-\text{Downtime}}{8760}.$$
+
+Power for each hour is calculated using the power curve for the NREL 12MW reference turbine (or variable input) with 
+
+
+$$
+P = \begin{cases}
+0 & \text{ if } v< v_{cut-in}\\
+\frac{1}{2}AC_p\rho(v^3)\eta & \text{ if } v_{cut-in}\leq v<v_{rated}\\
+P_{rated} & \text{ if } v_{rated}\leq v<v_{cut_out}\\
+0 & \text{ if } v \geq v_{cut-out}
+\end{cases}.
+$$
+
+
+The average energy yield is then scaled to remove estimated downtime
+$$AEY = \sum^T_{t=1} P_t \cdot H_t \cdot \frac{\text{Number of Operating Hours}-\text{Downtime}}{\text{Number of Operating Hours}}.$$
+
+Finally, the estimated cost of Operation and Maintenance is calculated as 
+
+$$C/kw/yr = \frac{\text{Cost}}{\text{AEY}}.$$
+
+### Markov Chain Model
 When unscheduled maintenance or repairs need to be carried out, vessels may only be sent out when the weather conditions are safe for a vessel, for the time needed to travel and carry out the operation.
 \noindent We may define three distinct states: 
 \begin{itemize}
