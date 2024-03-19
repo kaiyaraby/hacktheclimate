@@ -15,6 +15,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { TeamComponent } from "./Team";
 import { WorkspaceComponent } from "./Workspace";
 import { LandingComponent } from "./Landing";
+import { IndepthComponent } from "./Indepth";
 import './App.scss';
 
 // import { ReactComponent as Superlogo } from './Images/penguinlogo.svg';
@@ -149,6 +150,9 @@ const NavbarComponent = () => {
             <LinkContainer to="/Workspace">
                 <Nav.Link href="/Workspace">Workspace</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/Indepth">
+                <Nav.Link href="/Indepth">In Depth Analysis</Nav.Link>
+            </LinkContainer>
             <LinkContainer to="/Team">
                 <Nav.Link href="/Team">About</Nav.Link>
             </LinkContainer>
@@ -182,7 +186,12 @@ const router = createBrowserRouter([
             {
                 path: "Workspace",
                 element: <WorkspaceComponent />
+            },
+            {
+                path: "Indepth",
+                element: <IndepthComponent />
             }
+            
         ]
     }
 ]);
