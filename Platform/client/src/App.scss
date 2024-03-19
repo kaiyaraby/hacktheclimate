@@ -109,6 +109,29 @@ body{
     border-radius: 15;
 }
 
+.search{
+    padding: 15px;
+    width: 30%;
+    border-radius: 15;
+    color: red;
+}
+
+.side-by-side {
+    display: flex;
+    flex-direction: row;
+}
+
+.accord{
+    background-color: black;
+}
+
+.accordion {
+    color: #ffffff;
+    background-color: #29008a;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+    background-color: black;
+}
+
 
 
 

@@ -7,6 +7,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
+import Accordion from 'react-bootstrap/Accordion';
 
 const accessCoverage = {
     type: "feature",
@@ -67,29 +70,165 @@ const WorkspaceComponent = (props) => {
 
 const MenuComponent = (props) => {
 
-    return <div style={{
-        position: "absolute",
-        width: "40%",
-        height: "100%",
-        left: "2%",
-        border: "3px solid white",
-        backgroundColor: "white",
-    }}>
-        <Container className="m-auto m-2">
-            <Row>
-                <h1>This is the top row!</h1>
-                { JSON.stringify(props.points) }
-            </Row>
-            <Row>
-                <Button onClick={props.resetPoints}>
-                    Reset
-                </Button>
-            </Row>
-            <Row>
-                {JSON.stringify(props.analysis)}
-            </Row>
-        </Container>
-    </div>
+    return <Card bg = 'dark' class='search' text='white'
+                style={{
+                position: "absolute",
+                width: "40%",
+                height: "80%",
+                left: "5%",
+                top: "20%",
+                overflowY:scroll,
+                }}>
+                <Card.Body>
+                    <Card.Title style={{textAlign:'center'}}>Select Characteristics</Card.Title>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            
+                        
+                    <Accordion defaultActiveKey={['0']} alwaysOpen class='accord' style={{background: 'dark'}}>
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header>Accessibility</Accordion.Header>
+                            <Accordion.Body>
+                                <subcat>Access1</subcat>
+                                <br/>
+                                <div class="side-by-side">
+                                    <div>
+                                        <Form.Label>Average</Form.Label>
+                                        <Form.Control type="number" placeholder="0" readOnly/>
+                                    </div>
+                                    <div>
+                                        <Form.Label>Min</Form.Label>
+                                        <Form.Control type="number" placeholder="0" readOnly/>
+                                    </div>
+                                    <div>
+                                        <Form.Label>Max</Form.Label>
+                                        <Form.Control type="number" placeholder="0" readOnly/>
+                                    </div>
+                                </div>
+
+                                <subcat>Access2</subcat>
+                                <br/>
+                                <div class="side-by-side">
+                                    <div>
+                                        <Form.Label>Average</Form.Label>
+                                        <Form.Control type="number" placeholder="0" readOnly/>
+                                    </div>
+                                    <div>
+                                        <Form.Label>Min</Form.Label>
+                                        <Form.Control type="number" placeholder="0" readOnly/>
+                                    </div>
+                                    <div>
+                                        <Form.Label>Max</Form.Label>
+                                        <Form.Control type="number" placeholder="0" readOnly/>
+                                    </div>
+                                </div>
+
+                                <subcat>Access3</subcat>
+                                <br/>
+                                <div class="side-by-side">
+                                    <div>
+                                        <Form.Label>Average</Form.Label>
+                                        <Form.Control type="number" placeholder="0" readOnly/>
+                                    </div>
+                                    <div>
+                                        <Form.Label>Min</Form.Label>
+                                        <Form.Control type="number" placeholder="0" readOnly/>
+                                    </div>
+                                    <div>
+                                        <Form.Label>Max</Form.Label>
+                                        <Form.Control type="number" placeholder="0" readOnly/>
+                                    </div>
+                                </div>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="1">
+                            <Accordion.Header>Turbine</Accordion.Header>
+                            <Accordion.Body>
+                                <subcat>Turbine1</subcat>
+                                <br/>
+                                <div class="side-by-side">
+                                    <div>
+                                        <Form.Label>Average</Form.Label>
+                                        <Form.Control type="number" placeholder="0" />
+                                    </div>
+                                    <div>
+                                        <Form.Label>Min</Form.Label>
+                                        <Form.Control type="number" placeholder="0" />
+                                    </div>
+                                    <div>
+                                        <Form.Label>Max</Form.Label>
+                                        <Form.Control type="number" placeholder="0" />
+                                    </div>
+                                </div>
+
+                                <subcat>Turbine2</subcat>
+                                <br/>
+                                <div class="side-by-side">
+                                    <div>
+                                        <Form.Label>Average</Form.Label>
+                                        <Form.Control type="number" placeholder="0" />
+                                    </div>
+                                    <div>
+                                        <Form.Label>Min</Form.Label>
+                                        <Form.Control type="number" placeholder="0" />
+                                    </div>
+                                    <div>
+                                        <Form.Label>Max</Form.Label>
+                                        <Form.Control type="number" placeholder="0" />
+                                    </div>
+                                </div>
+
+                                <subcat>Turbine3</subcat>
+                                <br/>
+                                <div class="side-by-side">
+                                    <div>
+                                        <Form.Label>Average</Form.Label>
+                                        <Form.Control type="number" placeholder="0" />
+                                    </div>
+                                    <div>
+                                        <Form.Label>Min</Form.Label>
+                                        <Form.Control type="number" placeholder="0" />
+                                    </div>
+                                    <div>
+                                        <Form.Label>Max</Form.Label>
+                                        <Form.Control type="number" placeholder="0" />
+                                    </div>
+                                </div>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
+                    </Form.Group>
+                    </Form>
+                </Card.Body>
+                <Card.Footer>
+                <small className="muted" style={{textAlign:'center'}}>Learn more</small>
+                </Card.Footer>
+            </Card>
+
+    // return <div style={{
+    //     position: "absolute",
+    //     width: "40%",
+    //     height: "80%",
+    //     left: "5%",
+    //     top: "20%",
+    //     border: "3px solid white",
+    //     backgroundColor: "white",
+    // }}>
+    //     <Container className="m-auto m-2">
+    //         <Row>
+    //             <h1>This is the top row!</h1>
+    //             { JSON.stringify(props.points) }
+    //         </Row>
+    //         <Row>
+    //             <Button onClick={props.resetPoints}>
+    //                 Reset
+    //             </Button>
+    //         </Row>
+    //         <Row>
+    //             {JSON.stringify(props.analysis)}
+    //         </Row>
+    //     </Container>
+    // </div>
 };
 
 const RootInterfaceComponent = (props) => {
