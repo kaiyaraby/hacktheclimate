@@ -1,7 +1,12 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './App.scss';
-import profile from './Images/profilegrey.jpg';
+import profile from './Images/stranger.jpg';
+import kaiya from './Images/kaiyacropped.jpg';
+import kim from './Images/kim.jpg';
+import pauline from './Images/pauline.jpg';
+import jess from './Images/jess.webp';
+import ed from './Images/ed.webp';
 
 const TeamComponent =() => {
     return <body class='loading-page'>
@@ -25,7 +30,7 @@ const TeamComponent =() => {
                 <CardGroup class = 'wrapper' display="inline-block">
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={profile} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={kaiya} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
                         <Card.Title style={{textAlign:'center'}}>Kaiya</Card.Title>
@@ -39,7 +44,7 @@ const TeamComponent =() => {
                     </Card>
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={profile} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={jess} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
                         <Card.Title style={{textAlign:'center'}}>Jess</Card.Title>
@@ -53,7 +58,7 @@ const TeamComponent =() => {
                     </Card>
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={profile} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={kim} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
                         <Card.Title style={{textAlign:'center'}}>Kim</Card.Title>
@@ -79,7 +84,7 @@ const TeamComponent =() => {
                 <CardGroup class = 'wrapper' display="inline-block">
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={profile} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={ed} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
                         <Card.Title style={{textAlign:'center'}}>Ed</Card.Title>
@@ -93,7 +98,7 @@ const TeamComponent =() => {
                     </Card>
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={profile} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={pauline} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
                         <Card.Title style={{textAlign:'center'}}>Pauline</Card.Title>
