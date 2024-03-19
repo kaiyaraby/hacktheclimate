@@ -1,0 +1,36 @@
+name: Blob storage website CI
+
+on:
+    push:
+        branches: [ main ]
+
+jobs:
+  build:
+  
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: actions/checkout@v3
+    - uses: azure/login@v1
+      with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4.0.2
+
+    - name: Upload to blob storage
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+            cd Platform/client
+            export REACT_APP_BASE_URL="climateappapi.azurewebsites.net"
+            npm install
+            npm run build
+            cd build
+            az storage blob upload-batch --account-name climatehackathondatalake --auth-mode key -d '$web' -s .
+  # Azure logout
+    - name: logout
+      run: |
+            az logout
+      if: always()
+
