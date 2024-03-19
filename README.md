@@ -31,7 +31,7 @@
   <h3 align="center">PengWind</h3>
 
   <p align="center">
-    Python package using stochastic methods to estimate accessibility traits based on historic wave height data.
+    Python package using stochastic methods to estimate resource quality, through traditional methods combined with a novel Discrete Time Markov Chain Model to model weather window and vessel access.
     <br />
     <a href="https://github.com/kaiyaraby/statistical_access_modelling"><strong>Explore the docs »</strong></a>
     <br />
