@@ -25,7 +25,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="150" height="150">
+    <img src="images/penguinlogo.png" alt="Logo" width="150" height="150">
   </a>
 
   <h3 align="center">PengWind</h3>
@@ -81,7 +81,7 @@ The user can select an area over which to assess several KPIs including:
   - Min
   - Standard Deviation
   - Wind rose
-    
+
 - Access
     - Expected delay time
     - Probability of instant access
@@ -92,7 +92,6 @@ The user can select an area over which to assess several KPIs including:
 - Operation & Maintenance Cost per kW
 
 Traditionally, to incorporate the true variability of weather conditions, Monte Carlo simulations are often employed. However, these are computationally complex and limit the area over which resource, especially complex estimates such as Downtime, AEP, or O&M cost could be calculated. Through implementation of a number of novel computationally efficient models we have enabled calculation of these estimates quickly over large areas.
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 
 
@@ -108,11 +107,14 @@ Traditionally, to incorporate the true variability of weather conditions, Monte 
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Example Usage
+The user may output classical outputs to assess wind resource for a single point such as a wind rose,
+![](https://github.com/kaiyaraby/hacktheclimate/blob/main/images/windrose_point_5203_337_10years.gif)
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+or assess a KPI such as downtime across a wider geospatial dataset
+<img src="images/Downtime (hours).svg" alt="Logo">
 
-_For more examples, please refer to the [Documentation](https://example.com)
+For more examples, please refer to the [Website](https://example.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
