@@ -73,9 +73,13 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-The aim of this project is to present a framework for resource assessment, to enable to developers to use environmental data to identify high-value locations for wind farms. The models are created using over 16Gb of combined environmental data from Vestas Climate Libary and HubOcean.
+The aim of this project is to present a framework for resource assessment, to enable to developers to use environmental data to identify high-value locations for wind farms.
 
+The user can select an area over which to assess several KPIs such as Annual Energy Yield, Expected Downtime and Operation and Maintenance Cost per kW per year. These may be assessed quickly, over a very large area, to allow comparison of potential sites.
 
+These models combine traditional estimates with a Discrete Time Markov Chain Model capturing the behaviour and stochasticity of weather conditions, trained on over 16 GB of combined environmental data from the Vestas Climate Library and HubOcean. Traditionally, to incorporate the true variability of weather conditions, Monte Carlo simulations are often employed. However, these are computationally complex and limit the area over which resource, especially complex estimates such as Downtime, AEP, or O&M cost could be calculated. Through implementation of a number of novel computationally efficient models we have enabled calculation of these estimates quickly over large areas. The incorporation of this model allows for accurate estimation of weather delays and associated downtime, without compromising efficiency.
+
+The user may also produce a more in-depth analysis based on conditions at a single point, and compare change in conditions over time.
 The user can select an area over which to assess several KPIs including:
 - Wind speed
   - Mean
@@ -93,7 +97,6 @@ The user can select an area over which to assess several KPIs including:
 - Annual Energy Production
 - Operation & Maintenance Cost per kW
 
-Traditionally, to incorporate the true variability of weather conditions, Monte Carlo simulations are often employed. However, these are computationally complex and limit the area over which resource, especially complex estimates such as Downtime, AEP, or O&M cost could be calculated. Through implementation of a number of novel computationally efficient models we have enabled calculation of these estimates quickly over large areas.
 
 
 
