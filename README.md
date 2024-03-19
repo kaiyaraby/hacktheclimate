@@ -119,6 +119,11 @@ The user may output classical outputs to assess wind resource for a single point
 or assess a KPI such as downtime across a wider geospatial dataset
 <img src="images/Downtime (hours).svg" alt="Logo">
 
+For turbine-specific output, the user may input turbine parameters to calculate Annual Energy Production, and O&M cost per kW per year.
+<img src="images/AEY.svg" alt="Logo">
+<img src="images/OM_Cost.svg" alt="Logo">
+
+
 For more examples, please refer to the [Website](https://jolpi.ca/wind.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
