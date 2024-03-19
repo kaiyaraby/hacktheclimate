@@ -31,14 +31,13 @@
   <h3 align="center">PengWind</h3>
 
   <p align="center">
-    Python package using stochastic methods to estimate resource quality, through traditional methods combined with a novel Discrete Time Markov Chain Model to model weather window and vessel access.
+    Python package using stochastic methods to estimate resource quality, through traditional methods combined with a novel Discrete Time Markov Chain Model to model weather window and vessel access. -->
     <br />
-    <a href="https://github.com/kaiyaraby/statistical_access_modelling"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/kaiyaraby/statistical_access_modelling/Examples_and_validation/Example">View Demo</a>
+    <a href="https://github.com/kaiyaraby/hacktheclimate/vestas_data_collection">Data Collection</a>
+    .
+    <a href="https://jolpi.ca/wind.html">View Website</a>
     ·
-    <a href="https://github.com/kaiyaraby/statistical_access_modelling">Request Feature</a>
+    <a href="https://github.com/kaiyaraby/hacktheclimate/access_modelling_code">View Modelling</a>
   </p>
 </div>
 
