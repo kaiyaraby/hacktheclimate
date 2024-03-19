@@ -8,3 +8,5 @@ vestas_data_collection/area_wind_speed_data*.csv
 **/bin/
 **/obj/
 **/node_modules/
+analysis/input_data/timeseries_area_wind_speed/area*
+analysis/area_wind_speed_data*.csv
