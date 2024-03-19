@@ -25,7 +25,6 @@ jobs:
       run: |
         cd Platform/client
         export REACT_APP_BASE_URL="https://climateappapi.azurewebsites.net"
-        npm ci
         npm run build
         ls
 
