@@ -11,10 +11,10 @@ engine = create_engine(os.environ["ConnectionString"])
 # MeanDepth, MeanWaveHeight, MeanInstantAccessProbability, MeanExpectedDelayHours
 
 df = df.rename(columns={
-    "Cost_per_kw": "MeanCostPerKiloWatt",
+    "O&M Cost (£/kW/Year)": "MeanCostPerKiloWatt",
     "Downtime": "MeanDowntime",
     "Availability": "MeanAvailability",
-    "AEP": "MeanAnnualExpectedPower",
+    "Annual Energy Yield (GWh)": "MeanAnnualExpectedPower",
 })
 
 print(df.columns)
