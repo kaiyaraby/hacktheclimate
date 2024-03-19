@@ -94,7 +94,6 @@ const TurbineParameterComponent = (props) => {
             </Accordion.Body>
         </Accordion.Item>
     )
-
 }
 
 const DataRangeComponent = (props) => {
