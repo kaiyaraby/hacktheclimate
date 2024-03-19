@@ -10,7 +10,7 @@ const LandingComponent = () => {
     <div className="bg" />
 
     <div class='text-on-image'>
-        <heady class='headyurl'> jolpi.ca/wind.html </heady>
+        <heady class='headyurl'> jolpi.ca/wind.html </heady><br/>
         <heady class='heady'> Offshore Wind Analysis Tool </heady>
         <p class='ohmy'>
         The aim of this project is to present a framework for resource assessment, 
@@ -21,7 +21,7 @@ const LandingComponent = () => {
         These models combine traditional estimates with a Discrete Time Markov Chain Model capturing the behaviour and stochasticity
         of weather conditions, trained on over 16 GB of combined environmental data from the Vestas Climate Library and HubOcean. The incorporation of this model allows for accurate estimation of 
         weather delays and associated downtime. 
-        <br/>
+        <br/><br/>
         The user may also produce a more in-depth analysis based on conditions at a single point, and compare change in conditions over time.
             <br />
             <z> <div class="link-container">
