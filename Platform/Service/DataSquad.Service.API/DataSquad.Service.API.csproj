@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataSquad.Service.Data\DataSquad.Service.Data.csproj" />
+    <ProjectReference Include="..\DataSquad.Service.Domain\DataSquad.Service.Domain.csproj" />
   </ItemGroup>
 
 </Project>

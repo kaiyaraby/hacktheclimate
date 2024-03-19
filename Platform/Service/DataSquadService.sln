@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSquad.Service.API", "Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSquad.Service.Data", "DataSquad.Service.Data\DataSquad.Service.Data.csproj", "{A29ABC38-38AE-4868-BAB2-79BA503901E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSquad.Service.Domain", "DataSquad.Service.Domain\DataSquad.Service.Domain.csproj", "{16F91237-122C-4A09-BFCF-DA6385C352FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{A29ABC38-38AE-4868-BAB2-79BA503901E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A29ABC38-38AE-4868-BAB2-79BA503901E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A29ABC38-38AE-4868-BAB2-79BA503901E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16F91237-122C-4A09-BFCF-DA6385C352FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F91237-122C-4A09-BFCF-DA6385C352FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F91237-122C-4A09-BFCF-DA6385C352FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F91237-122C-4A09-BFCF-DA6385C352FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

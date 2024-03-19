@@ -1,12 +1,47 @@
 import { React, useState, useEffect, useRef } from "react";
 import { getExampleData } from './Service/Example';
+import { getAnalysis } from "./Service/Analysis";
 import Globe from "react-globe.gl";
 import EarthTexture from "./earthtexture.jpg";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+
+const accessCoverage = {
+    type: "feature",
+    geometry: {
+        type: "Polygon",
+        coordinates: [
+            [
+                [11.0, 51.0],
+                [-4.0, 51.0],
+                [-4.0, 61.0],
+                [11.0, 61.0],
+            ]
+        ]
+    }
+};
 
 const WorkspaceComponent = (props) => {
 
     const [points, setPoints] = useState([]);
     const [globeSelectedArea, setGlobeSelectedArea] = useState([]);
+    const [analysis, setAnalysis] = useState({});
+    const [refresh, setRefresh] = useState(false);
+
+    useEffect(() => {
+        const updateAnalysis = async () => {
+            const requestBody = points.map((x) => ({
+                latitude: x[1],
+                longitude: x[0]
+            }));
+            const response = await getAnalysis(requestBody);
+            setAnalysis(response);
+        };
+        console.log(points);
+        updateAnalysis();
+    }, [points, refresh]);
 
     const addPoint = (lat, lng) => {
         let newPoints = points;
@@ -15,17 +50,58 @@ const WorkspaceComponent = (props) => {
         setGlobeSelectedArea([{
             type: "feature",
             geometry: {
-                "type": "Polygon",
+                type: "Polygon",
                 coordinates: [points]
             }
         }]);
-        console.log(globeSelectedArea);
+        setRefresh(!refresh);
     };
 
-    return <RootInterfaceComponent globeSelectedArea={globeSelectedArea} addPoint={addPoint} />;
+    const resetPoints = () => {
+        setPoints([]);
+        setGlobeSelectedArea([]);
+    };
+
+    return <RootInterfaceComponent analysis={analysis} globeSelectedArea={globeSelectedArea} points={points} addPoint={addPoint} resetPoints={resetPoints}/>;
+};
+
+const MenuComponent = (props) => {
+
+    return <div style={{
+        position: "absolute",
+        width: "40%",
+        height: "100%",
+        left: "2%",
+        border: "3px solid white",
+        backgroundColor: "white",
+    }}>
+        <Container className="m-auto m-2">
+            <Row>
+                <h1>This is the top row!</h1>
+                { JSON.stringify(props.points) }
+            </Row>
+            <Row>
+                <Button onClick={props.resetPoints}>
+                    Reset
+                </Button>
+            </Row>
+            <Row>
+                {JSON.stringify(props.analysis)}
+            </Row>
+        </Container>
+    </div>
 };
 
 const RootInterfaceComponent = (props) => {
+
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+
+    const shiftFactor = 0.4;
+    const shiftAmount = windowWidth * shiftFactor;
+
+    const menuHeight = windowHeight * 0.8;
+    const menuWidth = windowWidth * shiftFactor;
 
     const globeElement = useRef(null);
 
@@ -37,22 +113,32 @@ const RootInterfaceComponent = (props) => {
     const onGlobeRightClick = ({lat, lng}, event) => {
         console.log("Right Click at " + lat + ", " + lng);
     }
-    return <GlobeComponent globeElement={globeElement} onGlobeClick={onGlobeClick} onGlobeRightClick={onGlobeRightClick} globeSelectedArea={props.globeSelectedArea} />;
+    return <>
+        <GlobeComponent globeElement={globeElement} windowWidth={windowWidth} shiftAmount={shiftAmount} onGlobeClick={onGlobeClick} onGlobeRightClick={onGlobeRightClick} globeSelectedArea={props.globeSelectedArea} points={props.points}/>
+        <MenuComponent points={props.globeSelectedArea} resetPoints={props.resetPoints} analysis={props.analysis}/>
+    </>;
 };
 
 const GlobeComponent = (props) => {
 
-    return <Globe
-        ref={props.globeElement}
-        globeImageUrl={EarthTexture}
-        showGraticules={true}
-        showAtmosphere={true}
-        onGlobeClick={props.onGlobeClick}
-        onGlobeRightClick={props.onGlobeRightClick}
-        polygonsData={props.globeSelectedArea}
-        polygonCapColor={() => 'rgba(200, 0, 0, 0.6)'}
-        polygonSideColor={() => 'rgba(0, 100, 0, 0.15)'}
-    />;
+    return <div style={{
+        marginLeft: `-${props.shiftAmount}}px`,
+        position: "absolute"
+    }}>
+        <Globe
+            ref={props.globeElement}
+            width={props.windowWidth + props.shiftAmount}
+            globeImageUrl={EarthTexture}
+            showGraticules={true}
+            showAtmosphere={true}
+            onGlobeClick={props.onGlobeClick}
+            onGlobeRightClick={props.onGlobeRightClick}
+            polygonsData={props.globeSelectedArea}
+            polygonCapColor={() => 'rgba(200, 0, 0, 0.25)'}
+            polygonsAltitude={0}
+            polygonsTransitionDuration={0}
+        />
+    </div>;
 }
 
 const TestComponent = () => {
