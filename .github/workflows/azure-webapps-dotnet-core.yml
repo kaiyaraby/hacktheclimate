@@ -27,6 +27,8 @@ env:
 on:
   push:
     branches: [ "main" ]
+    paths:
+    - Platform/Service
   workflow_dispatch:
 
 permissions:
