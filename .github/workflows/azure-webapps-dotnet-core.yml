@@ -28,7 +28,8 @@ on:
   push:
     branches: [ "main" ]
     paths:
-    - Platform/Service
+    - Platform/Service/*
+    - .github/workflows/azure-webapps-dotnet-core.yml
   workflow_dispatch:
 
 permissions:
