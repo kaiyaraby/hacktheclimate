@@ -121,7 +121,7 @@ or assess a KPI such as downtime across a wider geospatial dataset
 
 For turbine-specific output, the user may input turbine parameters to calculate Annual Energy Production, and O&M cost per kW per year.
 <img src="images/AEY.svg" alt="Logo">
-<img src="images/OM_Cost.svg" alt="Logo">
+<img src="images/OM_cost.svg" alt="Logo">
 
 
 For more examples, please refer to the [Website](https://jolpi.ca/wind.html)
@@ -227,8 +227,12 @@ $$Pr(X_t=i|X_{t-1}=j)=P_{i,j}.$$
 
 <!-- CONTACT -->
 ## Contact
-
+  - University of Strathclyde Wind&Marine Energy Systems and Structures CDT -
 Kaiya Raby - kaiya.raby@strath.ac.uk
+Kim Janovski - kim.janovski@strath.ac.uk
+--
+
+
 
 Project Link: [https://github.com/hacktheclimate]
 
