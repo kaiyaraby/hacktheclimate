@@ -53,6 +53,39 @@ namespace DataSquad.Service.Data.Migrations
 
                     b.ToTable("AccessibilityRecords");
                 });
+
+            modelBuilder.Entity("DataSquad.Service.Data.TurbineRecordEntity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<float>("Latitude")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Longitude")
+                        .HasColumnType("real");
+
+                    b.Property<float>("MeanAnnualExpectedPower")
+                        .HasColumnType("real");
+
+                    b.Property<float>("MeanAvailability")
+                        .HasColumnType("real");
+
+                    b.Property<float>("MeanCostPerKiloWatt")
+                        .HasColumnType("real");
+
+                    b.Property<float>("MeanDowntime")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Latitude", "Longitude");
+
+                    b.ToTable("TurbineRecords");
+                });
 #pragma warning restore 612, 618
         }
     }
