@@ -22,14 +22,14 @@ $theme-colors: (
   align-items: center; /* Align items vertically */
 }
 /* Style for link text */
-a {
+.gita {
   text-decoration: none; /* Remove underline */
   color: #0366d6; /* Set the link color */
   font-size: 16px; /* Set the font size for the text */
   display: flex; /* Set the text as a flex container */
   align-items: center; /* Align the text vertically */
 }
-a:visited {
+.gita:visited {
   color: #0366d6; /* Set the color for visited link */
 }
 /* Style for the logo */
