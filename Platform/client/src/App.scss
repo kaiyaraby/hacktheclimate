@@ -16,6 +16,28 @@ $theme-colors: (
 
 }
 
+/* Style for link container */
+.link-container {
+  display: inline-flex; /* Display the link container as inline-flex */
+  align-items: center; /* Align items vertically */
+}
+/* Style for link text */
+a {
+  text-decoration: none; /* Remove underline */
+  color: #0366d6; /* Set the link color */
+  font-size: 16px; /* Set the font size for the text */
+  display: flex; /* Set the text as a flex container */
+  align-items: center; /* Align the text vertically */
+}
+a:visited {
+  color: #0366d6; /* Set the color for visited link */
+}
+/* Style for the logo */
+.logo {
+  height: 32px; /* Set the height of the logo */
+  margin-right: 5px; /* Add some spacing between the logo and the text */
+}
+
 .head {
     text-align: center;
     font-size: 100px;
