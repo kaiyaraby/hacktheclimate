@@ -37,7 +37,7 @@ jobs:
         inlineScript: |
             ls
             cd Platform/client/build
-            az storage blob upload-batch --account-name climatehackathondatalake --auth-mode key -d '$web' -s .
+            az storage blob upload-batch --account-name climatehackathondatalake --auth-mode key -d '$web' --overwrite -s .
   # Azure logout
     - name: logout
       run: |
