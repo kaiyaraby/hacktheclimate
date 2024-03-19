@@ -10,12 +10,21 @@ import { baseUrl } from './ServiceBase';
  *  },
  * ]
  */
-const getAnalysis = async (region) => {
+const getAccessibilityAnalysis = async (region) => {
     if (region.length > 2) {
-        const response = await axios.post(baseUrl + "/Analysis", region);
+        const response = await axios.post(baseUrl + "/Analysis/accessibilityAnalysis", region);
         return response.data;
     }
     return {};
 };
 
-export { getAnalysis };
+const getTurbineAnalysis = async (region) => {
+    if (region.length > 2)
+    {
+        const response = await axios.post(baseUrl + "/Analysis/turbineAnalysis", region);
+        return response.data;
+    }
+    return {};
+}
+
+export { getAccessibilityAnalysis, getTurbineAnalysis };

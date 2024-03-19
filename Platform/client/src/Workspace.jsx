@@ -1,6 +1,6 @@
 import { React, useState, useEffect, useRef } from "react";
 import { getExampleData } from './Service/Example';
-import { getAnalysis } from "./Service/Analysis";
+import { getAccessibilityAnalysis, getTurbineAnalysis } from "./Service/Analysis";
 import Globe from "react-globe.gl";
 import EarthTexture from "./earthtexture.jpg";
 import Container from "react-bootstrap/Container";
@@ -27,20 +27,29 @@ const WorkspaceComponent = (props) => {
 
     const [points, setPoints] = useState([]);
     const [globeSelectedArea, setGlobeSelectedArea] = useState([]);
-    const [analysis, setAnalysis] = useState({});
+    const [accessibilityAnalysis, setAccessibilityAnalysis] = useState({});
+    const [turbineAnalysis, setTurbineAnalysis] = useState({});
     const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
-        const updateAnalysis = async () => {
+        const updateAccessibilityAnalysis = async () => {
             const requestBody = points.map((x) => ({
                 latitude: x[1],
                 longitude: x[0]
             }));
-            const response = await getAnalysis(requestBody);
-            setAnalysis(response);
+            const response = await getAccessibilityAnalysis(requestBody);
+            setAccessibilityAnalysis(response);
         };
-        console.log(points);
-        updateAnalysis();
+        const updateTurbineAnalysis = async () => {
+            const requestBody = points.map(x => ({
+                latitude: x[1],
+                longitude: x[0]
+            }));
+            const response = await getTurbineAnalysis(requestBody);
+            setTurbineAnalysis(response);
+        };
+        updateAccessibilityAnalysis();
+        updateTurbineAnalysis();
     }, [points, refresh]);
 
     const addPoint = (lat, lng) => {
@@ -62,7 +71,7 @@ const WorkspaceComponent = (props) => {
         setGlobeSelectedArea([]);
     };
 
-    return <RootInterfaceComponent analysis={analysis} globeSelectedArea={globeSelectedArea} points={points} addPoint={addPoint} resetPoints={resetPoints}/>;
+    return <RootInterfaceComponent accessibilityAnalysis={accessibilityAnalysis} turbineAnalysis={turbineAnalysis} globeSelectedArea={globeSelectedArea} points={points} addPoint={addPoint} resetPoints={resetPoints}/>;
 };
 
 const MenuComponent = (props) => {
@@ -86,7 +95,10 @@ const MenuComponent = (props) => {
                 </Button>
             </Row>
             <Row>
-                {JSON.stringify(props.analysis)}
+                {JSON.stringify(props.accessibilityAnalysis) }
+            </Row>
+            <Row>
+                { JSON.stringify(props.turbineAnalysis) }
             </Row>
         </Container>
     </div>
@@ -115,7 +127,7 @@ const RootInterfaceComponent = (props) => {
     }
     return <>
         <GlobeComponent globeElement={globeElement} windowWidth={windowWidth} shiftAmount={shiftAmount} onGlobeClick={onGlobeClick} onGlobeRightClick={onGlobeRightClick} globeSelectedArea={props.globeSelectedArea} points={props.points}/>
-        <MenuComponent points={props.globeSelectedArea} resetPoints={props.resetPoints} analysis={props.analysis}/>
+        <MenuComponent points={props.globeSelectedArea} resetPoints={props.resetPoints} accessibilityAnalysis={props.accessibilityAnalysis} turbineAnalysis={props.turbineAnalysis}/>
     </>;
 };
 
