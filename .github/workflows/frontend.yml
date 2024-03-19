@@ -2,10 +2,10 @@ name: Blob storage website CI
 
 on:
     push:
-        branches: [ main ]
+        branches: [ "main" ]
         paths:
-        - Platform/client/*
-        - .github/workflows/frontend.yml
+        - 'Platform/client/*'
+        - '.github/workflows/frontend.yml'
     workflow_dispatch:
 
 jobs:
