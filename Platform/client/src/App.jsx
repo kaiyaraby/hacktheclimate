@@ -17,6 +17,7 @@ import { WorkspaceComponent } from "./Workspace";
 import { LandingComponent } from "./Landing";
 import { IndepthComponent } from "./Indepth";
 import { DetailedAnalysisComponent } from "./DetailedAnalysis";
+import { AreaAnalysisComponent } from "./AreaAnalysis";
 import './App.scss';
 
 // import { ReactComponent as Superlogo } from './Images/penguinlogo.svg';
@@ -195,6 +196,10 @@ const router = createBrowserRouter([
             {
                 path: "DetailedAnalysis",
                 element: <DetailedAnalysisComponent />
+            },
+            {
+                path: "AreaAnalysis",
+                element: <AreaAnalysisComponent />
             },
         ]
     }

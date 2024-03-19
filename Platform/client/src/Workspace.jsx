@@ -11,6 +11,18 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
 
+import Image from 'react-bootstrap/Image';
+
+import WindRosePoint5180_152 from "./DataAssets/windrose_point_5180_152_10years.gif";
+import WindRosePoint5203_337 from "./DataAssets/windrose_point_5203_337_10years.gif";
+import WindRosePoint5362_442 from "./DataAssets/windrose_point_5362_442_10years.gif";
+
+const staticPoints = [
+    {lng: 1.521548, lat: 51.797416, size: 0.01, color: "green", image: WindRosePoint5180_152},
+    {lng: 3.371833, lat: 52.031556, size: 0.01, color: "green", image: WindRosePoint5203_337},
+    {lng: 4.421611, lat: 53.622583, size: 0.01, color: "green", image:WindRosePoint5362_442}
+]
+
 const accessCoverage = {
     type: "feature",
     geometry: {
@@ -126,6 +138,16 @@ const DataRangeComponent = (props) => {
     )
 }
 
+const PointCardComponent = (props) => {
+    return (
+        <>
+            <strong>Wind Rose for [{props.lat}, {props.long}]</strong>
+            <div className="m-1" />
+            <Image className="m-auto" src={props.image} alt=""/>
+        </>
+    );
+}
+
 const MenuComponent = (props) => {
 
     const turbineParameterInput = {
@@ -203,12 +225,16 @@ const MenuComponent = (props) => {
                 top: "15%",
                 overflowY: "scroll",
                 }}>
-                {props.points.length <= 2 ?
+                {props.pointMenuData != null &&
+                    <PointCardComponent image={props.pointMenuData.image} lat={props.pointMenuData.lat} long={props.pointMenuData.lng}/>
+                }
+                {props.points.length <= 2 && props.pointMenuData == null &&
                 <>
                     <div className="m-auto">
                         <p>Draw an area on the map to get started</p>
                     </div>
-                </> :
+                </>}
+                {props.points.length > 2 && props.pointMenuData == null &&
                 <>
                 <Card.Body>
                     <Card.Title style={{textAlign:'center'}}>Create Analysis</Card.Title>
@@ -228,6 +254,7 @@ const MenuComponent = (props) => {
                     </Form>
                 </Card.Body>
                 <Card.Footer>
+
                 <small className="muted" style={{textAlign:'center'}}>Learn more</small>
                 </Card.Footer>
                 </>}
@@ -235,6 +262,12 @@ const MenuComponent = (props) => {
 };
 
 const RootInterfaceComponent = (props) => {
+
+    const [pointMenuData, setPointMenuData] = useState(null);
+
+    const pointHoverCallback = (point, prevPoint) => {
+        setPointMenuData(point);
+    };
 
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
@@ -256,8 +289,8 @@ const RootInterfaceComponent = (props) => {
         console.log("Right Click at " + lat + ", " + lng);
     }
     return <>
-        <GlobeComponent globeElement={globeElement} windowWidth={windowWidth} shiftAmount={shiftAmount} onGlobeClick={onGlobeClick} onGlobeRightClick={onGlobeRightClick} globeSelectedArea={props.globeSelectedArea} points={props.points}/>
-        <MenuComponent points={props.points} resetPoints={props.resetPoints} accessibilityAnalysis={props.accessibilityAnalysis} turbineAnalysis={props.turbineAnalysis}/>
+        <GlobeComponent pointHoverCallback={pointHoverCallback} globeElement={globeElement} windowWidth={windowWidth} shiftAmount={shiftAmount} onGlobeClick={onGlobeClick} onGlobeRightClick={onGlobeRightClick} globeSelectedArea={props.globeSelectedArea} points={props.points}/>
+        <MenuComponent pointMenuData={pointMenuData} points={props.points} resetPoints={props.resetPoints} accessibilityAnalysis={props.accessibilityAnalysis} turbineAnalysis={props.turbineAnalysis}/>
     </>;
 };
 
@@ -280,6 +313,9 @@ const GlobeComponent = (props) => {
             polygonSideColor={() => 'rgba(111, 200, 111, 0.45)'}
             polygonsAltitude={0}
             polygonsTransitionDuration={0}
+            pointsData={staticPoints}
+            pointsRadius={0.01}
+            onPointHover={props.pointHoverCallback}
         />
     </div>;
 }
