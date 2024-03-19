@@ -20,15 +20,20 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v4.0.2
 
+    - name: Build
+      run: |
+        cd Platform/client
+        export REACT_APP_BASE_URL="https://climateappapi.azurewebsites.net"
+        npm ci
+        npm run build
+        ls
+
     - name: Upload to blob storage
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            cd Platform/client
-            export REACT_APP_BASE_URL="climateappapi.azurewebsites.net"
-            npm install
-            npm run build
-            cd build
+            ls
+            cd Platform/client/build
             az storage blob upload-batch --account-name climatehackathondatalake --auth-mode key -d '$web' -s .
   # Azure logout
     - name: logout
