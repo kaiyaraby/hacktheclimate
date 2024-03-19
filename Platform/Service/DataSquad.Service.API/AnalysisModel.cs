@@ -53,5 +53,37 @@ namespace DataSquad.Service.API
                 MeanExpectedDelayHours = meanExpectedDelayHours
             };
         }
+
+        public async Task<TurbineAnalysisResult> CreateTurbineAnalysis(List<GeoPoint> region)
+        {
+            var resultSet = (await _context.TurbineRecords.ToListAsync()).Where(
+                    x => x.ToTurbineRecord().ToGeoPoint().WithinRegion(region));
+
+            var minAvailability = resultSet.Min(x => x.MeanAvailability);
+            var maxAvailability = resultSet.Max(x => x.MeanAvailability);
+            var meanAvailability = resultSet.Average(x => x.MeanAvailability);
+
+            var minCostPerKiloWatt = resultSet.Min(x => x.MeanCostPerKiloWatt);
+            var maxCostPerKiloWatt = resultSet.Max(x => x.MeanCostPerKiloWatt);
+            var meanCostPerKiloWatt = resultSet.Average(x => x.MeanCostPerKiloWatt);
+
+            var minDowntime = resultSet.Min(x => x.MeanDowntime);
+            var maxDowntime = resultSet.Max(x => x.MeanDowntime);
+            var meanDowntime = resultSet.Average(x => x.MeanDowntime);
+
+            return new TurbineAnalysisResult
+            {
+                Region = region,
+                MinAvailability = minAvailability,
+                MaxAvailability = maxAvailability,
+                MeanAvailability = meanAvailability,
+                MinCostPerKiloWatt = minCostPerKiloWatt,
+                MaxCostPerKiloWatt = maxCostPerKiloWatt,
+                MeanCostPerKiloWatt = meanCostPerKiloWatt,
+                MinDowntime = minDowntime,
+                MaxDowntime = maxDowntime,
+                MeanDowntime = meanDowntime
+            };
+        }
     }
 }

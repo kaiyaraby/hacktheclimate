@@ -26,7 +26,25 @@ namespace DataSquad.Service.Domain
         }
     }
 
-    public class AccessibilityRecord
+    public interface IGeoPointRecord
+    {
+        float Latitude { get; set; }
+        float Longitude { get; set; }
+    }
+
+    public static class GeoPointExtensions
+    {
+        public static GeoPoint ToGeoPoint(this IGeoPointRecord x)
+        {
+             return new GeoPoint
+            {
+                Latitude = x.Latitude,
+                Longitude = x.Longitude,
+            };
+        }
+    }
+
+    public class AccessibilityRecord : IGeoPointRecord
     {
         public float Latitude { get; set; }
         public float Longitude { get; set; }
@@ -34,15 +52,32 @@ namespace DataSquad.Service.Domain
         public float MeanWaveHeight { get; set; }
         public float MeanInstantAccessProbability { get; set; }
         public float MeanExpectedDelayHours { get; set; }
+    }
 
-        public GeoPoint ToGeoPoint()
-        {
-            return new GeoPoint
-            {
-                Latitude = Latitude,
-                Longitude = Longitude,
-            };
-        }
+    public class TurbineRecord : IGeoPointRecord
+    {
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
+        public float MeanAvailability { get; set; }
+        public float MeanCostPerKiloWatt { get; set; }
+        public float MeanDowntime { get; set; }
+    }
+
+    public class TurbineAnalysisResult
+    {
+        public List<GeoPoint> Region { get; set; }
+
+        public float MinAvailability { get; set; }
+        public float MaxAvailability { get; set; }
+        public float MeanAvailability { get; set; }
+
+        public float MinCostPerKiloWatt { get; set; }
+        public float MaxCostPerKiloWatt { get; set; }
+        public float MeanCostPerKiloWatt { get; set; }
+
+        public float MinDowntime { get; set; }
+        public float MaxDowntime { get; set; }
+        public float MeanDowntime { get; set; }
     }
 
     public class AccessibilityAnalysisResult

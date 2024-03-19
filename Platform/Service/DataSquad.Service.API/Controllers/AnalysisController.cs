@@ -15,9 +15,18 @@ public class AnalysisController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(List<GeoPoint> region)
+    [Route("accessibilityAnalysis")]
+    public async Task<IActionResult> PostAccessibilityAnalysis(List<GeoPoint> region)
     {
         var analysis = await _analysisModel.CreateAccessibilityAnalysis(region);
+        return Ok(analysis);
+    }
+
+    [HttpPost]
+    [Route("turbineAnalysis")]
+    public async Task<IActionResult> PostTurbineAnalysis(List<GeoPoint> region)
+    {
+        var analysis = await _analysisModel.CreateTurbineAnalysis(region);
         return Ok(analysis);
     }
 }

@@ -1,0 +1,118 @@
+/* make the customizations */
+$theme-colors: (
+  'unicorns': rgb(249, 72, 152),
+  'sea': rgb(50, 80, 152),
+  'lake': rgb(90, 195, 200),
+  'grass': rgb(115, 200, 78),
+  'sand': rgb(228, 192, 190),
+  'babypink': rgb(251, 208, 224),
+//   'transpa': rgba(0, 0, 0, 0),
+
+);
+
+.Navbar {
+
+    color: rgb(50, 80, 152);
+
+}
+
+.head {
+    text-align: center;
+    font-size: 100px;
+}
+
+body, html {
+  height: 100%;
+}
+.bg {
+    background-image: url('./Images/turbines2.jpg');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg2 {
+    background-image: url('./Images/turbines.jpg');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.head-text {
+    position: relative;
+ }
+.text-on-image {
+    position: absolute;
+    left: 10%;
+    bottom: 65%;
+    color: rgb(50, 80, 152);
+}
+
+.heady {
+    font-size: 70px;
+    font-weight: 90;
+ }
+
+.heady2 {
+    position: absolute;
+    font-size: 70px;
+    font-weight: 90;
+    left: 65%;
+    bottom: 60%;
+}
+
+.ohmy {
+    position: absolute;
+    right: 0%;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.z {
+    text-align: center;
+    font-weight: 300;
+}
+
+.divy{
+    background-color: black;
+    color: black;
+}
+
+.loading-page {
+    color : black;
+    background-color: black;
+}
+
+.muted {
+    color : rgb(111, 111, 111);
+    background-color: black;
+}
+
+body{
+    color : black;
+    background-color: black;
+}
+
+.wrapper {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-left: 30px;
+  }
+  
+.card {
+    padding: 15px;
+    width: 30%;
+    border-radius: 15;
+}
+
+
+
+
+
+
+/* import bootstrap to set changes */
+@import '~bootstrap/scss/bootstrap';
