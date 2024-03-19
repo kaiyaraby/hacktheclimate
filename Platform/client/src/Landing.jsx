@@ -10,13 +10,18 @@ const LandingComponent = () => {
     <div className="bg" />
 
     <div class='text-on-image'>
-        <heady class='heady'> Green energy is bae </heady>
+        <heady class='heady'> Offshore Wind Analysis Tool </heady>
         <p class='ohmy'>
-            Oh my god we're being such good humans and all, here's a few facts about something something?
-            ieiurg pegn eiug peiuhg pweurgejn geur e rfpieurf piufj ietgh hg eig rhpeiug rhpeiug rhpieuh geur
-            ieug hpe rugpeu gfhpeiu rgh!
+        The aim of this project is to present a framework for resource assessment, 
+        to enable to developers to use environmental data to identify high-value locations for wind farms. 
+        The user can select an area over which to assess several KPIs such as Wind speed, Wind rose, Expected delay in maintaince, Annual Energy Production and others.
             <br />
-            <z> <a href="https://www.google.com">OMG A LINK!!</a> </z>
+            <z> <div class="link-container">
+  <a href="https://github.com/kaiyaraby/hacktheclimate" target="_blank">
+    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" class="logo"/>
+    <span>Source Code</span>
+  </a>
+</div> </z>
         </p>
         
     </div>
