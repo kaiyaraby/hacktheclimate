@@ -73,7 +73,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-The aim of this project is to present a framework for resource assessment, to enable to developers to use environmental data to identify high-value locations for wind farms.
+The aim of this project is to present a framework for resource assessment, to enable to developers to use environmental data to identify high-value locations for wind farms. The models are created using over 16Gb of combined environmental data from Vestas Climate Libary and HubOcean.
+
+
 The user can select an area over which to assess several KPIs including:
 - Wind speed
   - Mean
@@ -117,7 +119,7 @@ or assess a KPI such as downtime across a wider geospatial dataset
 For more examples, please refer to the [Website](https://jolpi.ca/wind.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+<img src="images/website.png" alt="Logo">
 
 
 
