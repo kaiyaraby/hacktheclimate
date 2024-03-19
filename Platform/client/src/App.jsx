@@ -152,8 +152,14 @@ const NavbarComponent = () => {
             <LinkContainer to="/Workspace">
                 <Nav.Link href="/Workspace">Workspace</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/DetailedAnalysis">
+                <Nav.Link href="/DetailedAnalysis">Point Analysis</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/AreaAnalysis">
+                <Nav.Link href="/AreaAnalysis">Area Analysis</Nav.Link>
+            </LinkContainer>
             <LinkContainer to="/Indepth">
-                <Nav.Link href="/Indepth">In Depth Analysis</Nav.Link>
+                <Nav.Link href="/Indepth">In-depth Analysis</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/Team">
                 <Nav.Link href="/Team">About</Nav.Link>
