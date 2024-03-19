@@ -17,8 +17,10 @@ namespace DataSquad.Service.API
         public async Task<AccessibilityAnalysisResult> CreateAccessibilityAnalysis(List<GeoPoint> region)
         {
 
-            var resultSet = (await _context.AccessibilityRecords.ToListAsync()).Where(
-                x => x.ToAccessibilityRecord().ToGeoPoint().WithinRegion(region));
+            var resultSet = (await _context.AccessibilityRecords.ToListAsync()).Select(x => x.ToAccessibilityRecord()).Where(
+                x => x.ToGeoPoint().WithinRegion(region));
+
+            int pointCount = resultSet.Count();
 
             float minDepth = resultSet.Min(x => x.MeanDepth);
             float maxDepth =  resultSet.Max(x => x.MeanDepth);
@@ -39,6 +41,7 @@ namespace DataSquad.Service.API
             return new AccessibilityAnalysisResult
             {
                 Region = region,
+                PointCount = pointCount,
                 MinDepth = minDepth,
                 MaxDepth = maxDepth,
                 MeanDepth = meanDepth,
@@ -56,8 +59,10 @@ namespace DataSquad.Service.API
 
         public async Task<TurbineAnalysisResult> CreateTurbineAnalysis(List<GeoPoint> region)
         {
-            var resultSet = (await _context.TurbineRecords.ToListAsync()).Where(
-                    x => x.ToTurbineRecord().ToGeoPoint().WithinRegion(region));
+            var resultSet = (await _context.TurbineRecords.ToListAsync()).Select(x => x.ToTurbineRecord()).Where(
+                    x => x.ToGeoPoint().WithinRegion(region));
+
+            int pointCount = resultSet.Count();
 
             var minAvailability = resultSet.Min(x => x.MeanAvailability);
             var maxAvailability = resultSet.Max(x => x.MeanAvailability);
@@ -71,9 +76,14 @@ namespace DataSquad.Service.API
             var maxDowntime = resultSet.Max(x => x.MeanDowntime);
             var meanDowntime = resultSet.Average(x => x.MeanDowntime);
 
+            var minAnnualExpectedPower = resultSet.Min(x => x.MeanAnnualExpectedPower);
+            var maxAnnualExpectedPower = resultSet.Max(x => x.MeanAnnualExpectedPower);
+            var meanAnnualExpectedPower = resultSet.Average(x => x.MeanAnnualExpectedPower);
+
             return new TurbineAnalysisResult
             {
                 Region = region,
+                PointCount = pointCount,
                 MinAvailability = minAvailability,
                 MaxAvailability = maxAvailability,
                 MeanAvailability = meanAvailability,

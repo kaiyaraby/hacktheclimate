@@ -51,6 +51,7 @@ namespace DataSquad.Service.Data
         public float MeanAvailability { get; set; }
         public float MeanCostPerKiloWatt { get; set; }
         public float MeanDowntime { get; set; }
+        public float MeanAnnualExpectedPower { get; set; }
 
         internal static void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -65,7 +66,8 @@ namespace DataSquad.Service.Data
                 Longitude = Longitude,
                 MeanAvailability = MeanAvailability,
                 MeanCostPerKiloWatt = MeanCostPerKiloWatt,
-                MeanDowntime = MeanDowntime
+                MeanDowntime = MeanDowntime,
+                MeanAnnualExpectedPower = MeanAnnualExpectedPower
             };
         }
     }
