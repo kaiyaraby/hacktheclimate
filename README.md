@@ -227,13 +227,17 @@ $$Pr(X_t=i|X_{t-1}=j)=P_{i,j}.$$
 
 <!-- CONTACT -->
 ## Contact
-  - University of Strathclyde Wind&Marine Energy Systems and Structures CDT -
+
 Kaiya Raby - kaiya.raby@strath.ac.uk
-Kim Janovski - kim.janovski@strath.ac.uk
---
+
+Kim Janovski - kim.janovski@strath.ac.uk      University of Strathclyde - Wind & Marine Energy Systems and Structures CDT
+
 Pauline Brusset
+
 Edward James Hamilton
+
 Jess Perry
+
 --
 
 Project Link: [https://github.com/hacktheclimate]
