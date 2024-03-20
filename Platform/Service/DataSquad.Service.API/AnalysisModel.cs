@@ -92,7 +92,10 @@ namespace DataSquad.Service.API
                 MeanCostPerKiloWatt = meanCostPerKiloWatt,
                 MinDowntime = minDowntime,
                 MaxDowntime = maxDowntime,
-                MeanDowntime = meanDowntime
+                MeanDowntime = meanDowntime,
+                MinAnnualExpectedPower = minAnnualExpectedPower,
+                MaxAnnualExpectedPower = maxAnnualExpectedPower,
+                MeanAnnualExpectedPower = meanAnnualExpectedPower
             };
         }
     }
