@@ -47,6 +47,13 @@ const WorkspaceComponent = (props) => {
     const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
+        const fetchExampleData = async () => {
+            await getExampleData();
+        };
+        fetchExampleData();
+    }, []);
+
+    useEffect(() => {
         const updateTurbineAnalysis = async () => {
             const requestBody = points.map((x) => ({
                 latitude: x[1],
