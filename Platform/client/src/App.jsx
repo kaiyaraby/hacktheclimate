@@ -159,7 +159,7 @@ const NavbarComponent = () => {
                 <Nav.Link href="/AreaAnalysis">Area Analysis</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/Indepth">
-                <Nav.Link href="/Indepth">In-depth Analysis</Nav.Link>
+                <Nav.Link href="/Indepth">Summary Builder</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/Team">
                 <Nav.Link href="/Team">About</Nav.Link>
