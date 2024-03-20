@@ -140,7 +140,8 @@ body{
 }
 
 .wrapper {
-    padding: 30px;
+    padding-left: 30;
+    padding-right: 30;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -148,7 +149,10 @@ body{
   }
 
 .card {
-    padding: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: 30%;
     border-radius: 15;
 }

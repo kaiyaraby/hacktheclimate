@@ -1,12 +1,12 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './App.scss';
-import profile from './Images/stranger.jpg';
+import profile from './Images/penguinstranger.png';
 import kaiya from './Images/kaiyacropped.jpg';
 import kim from './Images/kim.jpg';
 import pauline from './Images/pauline.jpg';
 import jess from './Images/jess.webp';
-import ed from './Images/ed.webp';
+import ed from './Images/ed.jpg';
 
 const TeamComponent =() => {
     return <body class='loading-page'>
@@ -23,106 +23,79 @@ const TeamComponent =() => {
                     <br />
                     <br />
                     <br />
-                    <br />
-                    <br />
+                    
                 </divy>
 
                 <CardGroup class = 'wrapper' display="inline-block">
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={kaiya} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={kaiya} style={{width: '13vw', height: '18vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
                         <Card.Title style={{textAlign:'center'}}>Kaiya</Card.Title>
                         <Card.Text style={{textAlign:'center'}}>
-                            PhD Research Student @University of Strathclyde
+                            Data Scientist (Area Analysis)
                         </Card.Text>
                         </Card.Body>
-                        <Card.Footer>
-                        <small className="muted" style={{textAlign:'center'}}>Learn more</small>
-                        </Card.Footer>
                     </Card>
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={jess} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={jess} style={{width: '13vw', height: '18vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
                         <Card.Title style={{textAlign:'center'}}>Jess</Card.Title>
                         <Card.Text style={{textAlign:'center'}}>
-                            Software Engineer @Skyscanner
+                            Data Pipelines Architect
                         </Card.Text>
                         </Card.Body>
-                        <Card.Footer>
-                        <small className="muted" style={{textAlign:'center'}}>Learn more</small>
-                        </Card.Footer>
+
                     </Card>
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={kim} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={kim} style={{width: '13vw', height: '18vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
                         <Card.Title style={{textAlign:'center'}}>Kim</Card.Title>
                         <Card.Text style={{textAlign:'center'}}>
-                            PhD Research Student @University of Strathclyde
+                            Data Scientist (Point Analysis)
                         </Card.Text>
                         </Card.Body>
-                        <Card.Footer>
-                        <small className="muted" style={{textAlign:'center'}}>Learn more</small>
-                        </Card.Footer>
+
                     </Card>
                 </CardGroup>
-
-                <divy>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                </divy>
-
-
                 <CardGroup class = 'wrapper' display="inline-block">
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={ed} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={ed} style={{width: '13vw', height: '18vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
                         <Card.Title style={{textAlign:'center'}}>Ed</Card.Title>
                         <Card.Text style={{textAlign:'center'}}>
-                            Software Engineer @PwC
+                            Application Engineer
                         </Card.Text>
                         </Card.Body>
-                        <Card.Footer>
-                        <small className="muted" style={{textAlign:'center'}}>Learn more</small>
-                        </Card.Footer>
                     </Card>
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={pauline} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={pauline} style={{width: '13vw', height: '18vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
                         <Card.Title style={{textAlign:'center'}}>Pauline</Card.Title>
                         <Card.Text style={{textAlign:'center'}}>
-                            Security Engineer @Check Point
+                            Front-End Engineer
                         </Card.Text>
                         </Card.Body>
-                        <Card.Footer>
-                        <small className="muted" style={{textAlign:'center'}}>Learn more</small>
-                        </Card.Footer>
                     </Card>
                     <Card bg = 'black' text = 'white' class='card'>
                         <div style={{textAlign: 'center'}}>
-                            <Card.Img src={profile} style={{width: '20vw', height: '30vw', borderRadius: 200, alignItems: 'center'}}/>
+                            <Card.Img src={profile} style={{width: '13vw', height: '18vw', borderRadius: 200, alignItems: 'center'}}/>
                         </div>
                         <Card.Body>
-                        <Card.Title style={{textAlign:'center'}}>Join us!</Card.Title>
+                        <Card.Title style={{textAlign:'center'}}>Love</Card.Title>
                         <Card.Text style={{textAlign:'center'}}>
-                            Tell us more about you!
+                            Made with love ♥
                         </Card.Text>
                         </Card.Body>
-                        <Card.Footer>
-                        <small className="muted" style={{textAlign:'center'}}>Learn more</small>
-                        </Card.Footer>
                     </Card>
                 </CardGroup>
 
