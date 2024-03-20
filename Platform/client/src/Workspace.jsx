@@ -1,7 +1,7 @@
 import { React, useState, useEffect, useRef } from "react";
 import { getExampleData } from './Service/Example';
 import { getAccessibilityAnalysis, getTurbineAnalysis } from "./Service/Analysis";
-import Globe from "react-globe.gl";
+import Globe, { pointOfView } from "react-globe.gl";
 import EarthTexture from "./earthtexture.jpg";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -154,8 +154,36 @@ const MenuComponent = (props) => {
         eventKey: "3",
         items: [
             {
-                parameter: "Parameter",
-                value: 0
+                parameter: "Power Coefficient",
+                value: 0.59
+            },
+            {
+                parameter: "Drivetrain Efficiency",
+                value: 0.9
+            },
+            {
+                parameter: "Rotor Radius (m)",
+                value: 120,
+            },
+            {
+                parameter: "Cut In",
+                value: 3
+            },
+            {
+                parameter: "Cut Out",
+                value: 25,
+            },
+            {
+                parameter: "Rated WSP",
+                value: 11
+            },
+            {
+                parameter: "Rated Power (MW)",
+                value: 12
+            },
+            {
+                parameter: "Hub Height (m)",
+                value: 150
             }
         ]
     }
@@ -279,6 +307,10 @@ const RootInterfaceComponent = (props) => {
     const menuWidth = windowWidth * shiftFactor;
 
     const globeElement = useRef(null);
+
+    useEffect(() => {
+        globeElement.current.pointOfView({lat: 55.0, lng: 3.5, altitude: 0.4});
+    }, []);
 
     const onGlobeClick = ({lat, lng}, event) => {
         console.log("Left Click at " + lat + ", " + lng);
