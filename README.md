@@ -245,13 +245,6 @@ Project Link: [https://github.com/hacktheclimate]
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-This package uses the methods outlined in  [Feuchtwang and Infield 2013](https://onlinelibrary.wiley.com/doi/abs/10.1002/we.1539). Further information about how these models have been developed can be found in the linked [document](https://github.com/statistical_access_modelling/Examples_and_validation/Derivation.pdf)
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
